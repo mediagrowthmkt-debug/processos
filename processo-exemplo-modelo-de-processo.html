@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Modelo de processo (exemplo) · Processos MediaGrowth</title>
+<meta name="description" content="Página-exemplo mostrando todos os tipos de bloco: texto, passos, vídeo, imagem e destaque.">
+<meta property="og:type" content="website"><meta property="og:title" content="Modelo de processo (exemplo) · Processos MediaGrowth">
+<meta property="og:description" content="Página-exemplo mostrando todos os tipos de bloco: texto, passos, vídeo, imagem e destaque.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#EEF2F7;--card:#fff;--orange:#E86B2A;--orange-soft:rgba(232,107,42,.10);
+--border:rgba(0,0,0,.08);--border-o:rgba(232,107,42,.30);--ink:#16181d;--gray:#8a909a}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+min-height:100dvh;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px 80px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.logo-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;
+box-shadow:0 0 0 3px var(--orange-soft);flex-shrink:0}
+.logo-text{font-weight:600;font-size:15px;letter-spacing:-.2px}
+.topbar .sep{flex:1}
+.topbar a.back{font-size:13px;color:var(--gray);text-decoration:none;font-weight:500}
+.topbar a.back:hover{color:var(--ink)}
+h1.title{font-size:30px;font-weight:600;letter-spacing:-.6px;margin:6px 0 6px}
+.sub{color:var(--gray);font-size:14px;margin-bottom:26px}
+/* busca */
+.search{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:12px;
+background:var(--card);font:inherit;font-size:14px;margin-bottom:26px;outline:none}
+.search:focus{border-color:var(--border-o)}
+/* categorias + grid */
+.cat-h{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+color:var(--gray);margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;
+transition:border-color .16s,transform .14s}
+.card:hover{border-color:var(--border-o);transform:translateY(-2px)}
+.card .ic{font-size:22px}
+.card .lbl{font-weight:600;font-size:15px;letter-spacing:-.1px}
+.card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
+.card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
+.card.ext .go::after{content:" ↗"}
+.empty{color:var(--gray);font-size:13px;padding:14px 2px}
+/* processo */
+.meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}
+.meta b{color:var(--ink);font-weight:600}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+margin:0 0 28px;display:flex;flex-direction:column;gap:7px}
+.toc-h{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+.toc a{font-size:13.5px;text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--orange)}
+.content>*{margin-bottom:18px}
+.b-texto p{font-size:15.5px;margin-bottom:12px}
+.b-texto p:last-child{margin-bottom:0}
+.b-titulo{font-size:20px;font-weight:600;letter-spacing:-.3px;margin:34px 0 12px;
+padding-bottom:8px;border-bottom:1px solid var(--border);scroll-margin-top:20px}
+.b-passos,.b-lista{padding-left:0;list-style:none;counter-reset:step}
+.b-passos li{position:relative;padding:10px 0 10px 44px;font-size:15px;border-bottom:1px solid var(--border)}
+.b-passos li:last-child{border-bottom:0}
+.b-passos li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:9px;
+width:28px;height:28px;background:var(--orange-soft);color:var(--orange);font-weight:600;font-size:13px;
+border-radius:50%;display:flex;align-items:center;justify-content:center}
+.b-lista li{position:relative;padding:6px 0 6px 22px;font-size:15px}
+.b-lista li::before{content:"";position:absolute;left:4px;top:14px;width:6px;height:6px;
+background:var(--orange);border-radius:50%}
+.ratio{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+background:#000;border:1px solid var(--border)}
+.ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.b-imagem img{width:100%;border-radius:12px;border:1px solid var(--border);display:block}
+.legenda{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
+.b-destaque{display:flex;gap:11px;padding:14px 16px;border-radius:12px;font-size:14px;align-items:flex-start}
+.b-destaque .ic{font-size:17px;line-height:1.4}
+.b-destaque.info{background:#eef4ff;border:1px solid #d6e4ff}
+.b-destaque.aviso{background:#fff4e8;border:1px solid #ffd8a8}
+.b-destaque.dica{background:var(--orange-soft);border:1px solid var(--border-o)}
+.b-arquivo{display:inline-flex;gap:8px;padding:11px 16px;background:var(--card);border:1px solid var(--border);
+border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px}
+.b-arquivo:hover{border-color:var(--border-o)}
+.b-divisor{border:0;border-top:1px solid var(--border)}
+code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:.9em;
+font-family:ui-monospace,Menlo,monospace}
+/* copiar link */
+.copybar{position:fixed;right:18px;bottom:18px;z-index:50}
+.copybar button{background:var(--orange);color:#fff;border:0;border-radius:12px;padding:12px 18px;
+font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;box-shadow:0 8px 24px rgba(232,107,42,.35);
+display:flex;align-items:center;gap:8px}
+.copybar button:active{transform:scale(.97)}
+.copybar .ok{background:#1f9d55;box-shadow:0 8px 24px rgba(31,157,85,.35)}
+.foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
+font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}}
+</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="index.html">← Todos os processos</a></div><h1 class="title">Modelo de processo (exemplo)</h1><div class="sub">Página-exemplo mostrando todos os tipos de bloco: texto, passos, vídeo, imagem e destaque.</div><div class="meta"><span>🚀 <b>Comece por aqui</b></span><span>Atualizado em <b>2026-06-10</b></span><span>Por <b>MediaGrowth</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#1-bloco-de-passos">1. Bloco de passos</a><a href="#2-bloco-de-v-deo">2. Bloco de vídeo</a><a href="#3-bloco-de-destaque">3. Bloco de destaque</a></nav><div class="content"><div class="b-texto"><p>Esta página é um <strong>modelo</strong> pra você ver como um processo fica montado. Cada processo pode misturar texto, listas, passos numerados, <em>destaques</em>, imagens e vídeos.</p></div>
+<h2 id="1-bloco-de-passos" class="b-titulo">1. Bloco de passos</h2>
+<ol class="b-passos"><li>Primeiro passo do procedimento.</li><li>Segundo passo, com um detalhe importante.</li><li>Terceiro passo e finalização.</li></ol>
+<h2 id="2-bloco-de-v-deo" class="b-titulo">2. Bloco de vídeo</h2>
+<div class="b-texto"><p>O vídeo abaixo é só um exemplo de embed. A central aceita <strong>Loom</strong>, <strong>YouTube</strong> ou um arquivo de vídeo hospedado.</p></div>
+<figure class="b-video"><div class="ratio"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="legenda">Exemplo de vídeo-tutorial (substituível por Loom/YouTube).</div></figure>
+<h2 id="3-bloco-de-destaque" class="b-titulo">3. Bloco de destaque</h2>
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div>Use destaques pra avisos críticos que ninguém pode pular.</div></div>
+<div class="b-destaque info"><span class="ic">ℹ️</span><div>Ou pra informações de contexto.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
+const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
+try{await navigator.clipboard.writeText(location.href);}catch(e){
+const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
+setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+</script></body></html>
