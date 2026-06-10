@@ -47,6 +47,24 @@ font-size:16px;padding-left:3px;backdrop-filter:blur(2px)}
 .card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
 .card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
 .card.ext .go::after{content:" ↗"}
+/* nível 1 — caixas de categoria (grid clicável) */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.cat-box{appearance:none;cursor:pointer;text-align:left;background:var(--card);border:1px solid var(--border);
+border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;gap:9px;font:inherit;color:inherit;
+transition:border-color .16s,transform .14s,box-shadow .16s}
+.cat-box:hover{border-color:var(--border-o);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.cat-emoji{font-size:42px;line-height:1}
+.cat-name{font-size:16.5px;font-weight:600;letter-spacing:-.2px}
+.cat-count{font-size:12px;color:var(--gray);font-weight:500;display:flex;align-items:center;gap:5px}
+.cat-count::after{content:"abrir →";margin-left:auto;color:var(--orange);font-weight:600;opacity:0;transition:opacity .15s}
+.cat-box:hover .cat-count::after{opacity:1}
+/* nível 2 — voltar + cabeçalho da categoria */
+.back-cats{appearance:none;cursor:pointer;background:none;border:0;color:var(--gray);font:inherit;font-size:13px;
+font-weight:500;padding:5px 0;margin-bottom:8px;display:inline-flex;align-items:center;gap:5px}
+.back-cats:hover{color:var(--ink)}
+.list-h{font-size:23px;font-weight:600;letter-spacing:-.3px;margin:2px 0 20px;display:flex;align-items:center;gap:11px}
+.list-h .list-emoji{font-size:28px}
+.ext-tag{font-size:11px;color:var(--orange)}
 .empty{color:var(--gray);font-size:13px;padding:14px 2px}
 /* processo */
 .meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}

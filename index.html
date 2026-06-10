@@ -47,6 +47,24 @@ font-size:16px;padding-left:3px;backdrop-filter:blur(2px)}
 .card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
 .card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
 .card.ext .go::after{content:" ↗"}
+/* nível 1 — caixas de categoria (grid clicável) */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.cat-box{appearance:none;cursor:pointer;text-align:left;background:var(--card);border:1px solid var(--border);
+border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;gap:9px;font:inherit;color:inherit;
+transition:border-color .16s,transform .14s,box-shadow .16s}
+.cat-box:hover{border-color:var(--border-o);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.cat-emoji{font-size:42px;line-height:1}
+.cat-name{font-size:16.5px;font-weight:600;letter-spacing:-.2px}
+.cat-count{font-size:12px;color:var(--gray);font-weight:500;display:flex;align-items:center;gap:5px}
+.cat-count::after{content:"abrir →";margin-left:auto;color:var(--orange);font-weight:600;opacity:0;transition:opacity .15s}
+.cat-box:hover .cat-count::after{opacity:1}
+/* nível 2 — voltar + cabeçalho da categoria */
+.back-cats{appearance:none;cursor:pointer;background:none;border:0;color:var(--gray);font:inherit;font-size:13px;
+font-weight:500;padding:5px 0;margin-bottom:8px;display:inline-flex;align-items:center;gap:5px}
+.back-cats:hover{color:var(--ink)}
+.list-h{font-size:23px;font-weight:600;letter-spacing:-.3px;margin:2px 0 20px;display:flex;align-items:center;gap:11px}
+.list-h .list-emoji{font-size:28px}
+.ext-tag{font-size:11px;color:var(--orange)}
 .empty{color:var(--gray);font-size:13px;padding:14px 2px}
 /* processo */
 .meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}
@@ -96,10 +114,48 @@ display:flex;align-items:center;gap:8px}
 .foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
 font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
 @media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}}
-</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span></div><h1 class="title">Processos · MediaGrowth</h1><div class="sub">Central de processos, documentos padronizados e vídeo-tutoriais da equipe.</div><input class="search" id="q" placeholder="🔎 Buscar processo..." autocomplete="off"><div id="secs"><div class="cat" data-cat="comece-aqui"><div class="cat-h">🚀 Comece por aqui</div><div class="grid"><a class="card" href="processo-como-usar-a-central.html" data-name="como usar a central de processos o que é, pra que serve e como navegar por esta central."><span class="ic">🧭</span><span class="lbl">Como usar a Central de Processos</span><span class="desc">O que é, pra que serve e como navegar por esta central.</span><span class="go">Abrir processo →</span></a></div></div><div class="cat" data-cat="producao"><div class="cat-h">🎬 Produção de Conteúdo</div><div class="grid"><a class="card" href="processo-achar-videos-impactantes-marcelo.html" data-name="como achar vídeos e imagens impactantes (marcelo e clientes) como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar."><div class="card-cover"><img src="assets/achar-videos-impactantes-marcelo-capa.jpg" loading="lazy" alt=""><span class="play">▶</span></div><span class="ic">🎬</span><span class="lbl">Como achar vídeos e imagens impactantes (Marcelo e clientes)</span><span class="desc">Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.</span><span class="go">Abrir processo →</span></a></div></div><div class="cat" data-cat="crm"><div class="cat-h">📇 CRM</div><div class="grid"><a class="card ext" href="https://treinamento.mediagrowth.com.br/" target="_blank" rel="noopener" data-name="treinamento crm (vídeos) tutoriais em vídeo do crm — conversas, oportunidades, acesso e mais."><span class="ic">🎓</span><span class="lbl">Treinamento CRM (vídeos)</span><span class="desc">Tutoriais em vídeo do CRM — conversas, oportunidades, acesso e mais.</span><span class="go">Abrir</span></a></div></div></div><div class="empty" id="empty" style="display:none">Nenhum processo encontrado.</div><div class="foot">MediaGrowth · Central de Processos</div></div><script>
-const q=document.getElementById('q'),secs=document.getElementById('secs'),empty=document.getElementById('empty');
-q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();let any=false;
-secs.querySelectorAll('.cat').forEach(cat=>{let vis=0;
-cat.querySelectorAll('.card').forEach(c=>{const m=!t||(c.dataset.name||'').includes(t);c.style.display=m?'':'none';if(m)vis++;});
-cat.style.display=vis?'':'none';if(vis)any=true;});empty.style.display=any?'none':'';});
+</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span></div><h1 class="title">Processos · MediaGrowth</h1><div class="sub">Central de processos, documentos padronizados e vídeo-tutoriais da equipe.</div><input class="search" id="q" placeholder="🔎 Buscar processo..." autocomplete="off"><div id="view-cats"><div class="cat-grid"><button class="cat-box" data-cat="comece-aqui" data-name="comece por aqui"><span class="cat-emoji">🚀</span><span class="cat-name">Comece por aqui</span><span class="cat-count">1 processo</span></button><button class="cat-box" data-cat="producao" data-name="produção de conteúdo"><span class="cat-emoji">🎬</span><span class="cat-name">Produção de Conteúdo</span><span class="cat-count">1 processo</span></button><button class="cat-box" data-cat="crm" data-name="crm"><span class="cat-emoji">📇</span><span class="cat-name">CRM</span><span class="cat-count">1 processo</span></button></div></div><div id="view-list" hidden><button class="back-cats" id="backCats">← Todas as categorias</button><div class="list-h" id="listH"></div><div class="grid" id="listGrid"></div><div class="empty" id="empty" hidden>Nenhum processo encontrado.</div></div><div id="pool" hidden><a class="card" data-cat="comece-aqui" href="processo-como-usar-a-central.html" data-name="como usar a central de processos o que é, pra que serve e como navegar por esta central."><span class="ic">🧭</span><span class="lbl">Como usar a Central de Processos</span><span class="desc">O que é, pra que serve e como navegar por esta central.</span><span class="go">Abrir processo →</span></a><a class="card" data-cat="producao" href="processo-achar-videos-impactantes-marcelo.html" data-name="como achar vídeos e imagens impactantes (marcelo e clientes) como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar."><div class="card-cover"><img src="assets/achar-videos-impactantes-marcelo-capa.jpg" loading="lazy" alt=""><span class="play">▶</span></div><span class="ic">🎬</span><span class="lbl">Como achar vídeos e imagens impactantes (Marcelo e clientes)</span><span class="desc">Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.</span><span class="go">Abrir processo →</span></a><a class="card ext" data-cat="crm" href="https://treinamento.mediagrowth.com.br/" target="_blank" rel="noopener" data-name="treinamento crm (vídeos) tutoriais em vídeo do crm — conversas, oportunidades, acesso e mais."><span class="ic">🎓</span><span class="lbl">Treinamento CRM (vídeos) <span class="ext-tag">↗</span></span><span class="desc">Tutoriais em vídeo do CRM — conversas, oportunidades, acesso e mais.</span><span class="go">Abrir ↗</span></a></div><div class="foot">MediaGrowth · Central de Processos</div></div><script>
+const CAT_META = {"comece-aqui": {"icone": "🚀", "nome": "Comece por aqui"}, "producao": {"icone": "🎬", "nome": "Produção de Conteúdo"}, "operacao": {"icone": "⚙️", "nome": "Operação"}, "comercial": {"icone": "💼", "nome": "Comercial"}, "crm": {"icone": "📇", "nome": "CRM"}};
+const q=document.getElementById('q');
+const viewCats=document.getElementById('view-cats');
+const viewList=document.getElementById('view-list');
+const listH=document.getElementById('listH');
+const listGrid=document.getElementById('listGrid');
+const backBtn=document.getElementById('backCats');
+const empty=document.getElementById('empty');
+const allCards=[...document.getElementById('pool').querySelectorAll('.card')];
+
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function fill(cards){
+  listGrid.innerHTML='';
+  cards.forEach(c=>listGrid.appendChild(c.cloneNode(true)));
+  empty.hidden = cards.length>0;
+}
+function showCats(){
+  viewList.hidden=true; viewCats.hidden=false;
+  if(location.hash) history.replaceState(null,'',location.pathname);
+  window.scrollTo({top:0});
+}
+function openCat(catId){
+  const m=CAT_META[catId]||{icone:'',nome:catId};
+  backBtn.hidden=false;
+  listH.innerHTML=`<span class="list-emoji">${m.icone||'📁'}</span> ${esc(m.nome||'')}`;
+  fill(allCards.filter(c=>c.dataset.cat===catId));
+  viewCats.hidden=true; viewList.hidden=false;
+  history.replaceState(null,'','#'+catId);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function doSearch(t){
+  t=(t||'').trim().toLowerCase();
+  if(!t){ const h=location.hash.replace('#',''); if(h&&CAT_META[h])openCat(h); else showCats(); return; }
+  backBtn.hidden=true;
+  listH.innerHTML=`<span class="list-emoji">🔎</span> Resultados para "${esc(t)}"`;
+  fill(allCards.filter(c=>(c.dataset.name||'').includes(t)));
+  viewCats.hidden=true; viewList.hidden=false;
+}
+
+viewCats.addEventListener('click',e=>{const b=e.target.closest('.cat-box');if(b)openCat(b.dataset.cat);});
+backBtn.addEventListener('click',()=>{q.value='';showCats();});
+q.addEventListener('input',()=>doSearch(q.value));
+window.addEventListener('load',()=>{const h=location.hash.replace('#','');if(h&&CAT_META[h])openCat(h);});
 </script></body></html>
