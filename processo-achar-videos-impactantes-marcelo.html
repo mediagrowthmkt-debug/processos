@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Como achar vídeos e imagens impactantes (Marcelo e clientes) · Processos MediaGrowth</title>
+<meta name="description" content="Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.">
+<meta property="og:type" content="website"><meta property="og:title" content="Como achar vídeos e imagens impactantes (Marcelo e clientes) · Processos MediaGrowth">
+<meta property="og:description" content="Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#EEF2F7;--card:#fff;--orange:#E86B2A;--orange-soft:rgba(232,107,42,.10);
+--border:rgba(0,0,0,.08);--border-o:rgba(232,107,42,.30);--ink:#16181d;--gray:#8a909a}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+min-height:100dvh;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px 80px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.logo-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;
+box-shadow:0 0 0 3px var(--orange-soft);flex-shrink:0}
+.logo-text{font-weight:600;font-size:15px;letter-spacing:-.2px}
+.topbar .sep{flex:1}
+.topbar a.back{font-size:13px;color:var(--gray);text-decoration:none;font-weight:500}
+.topbar a.back:hover{color:var(--ink)}
+h1.title{font-size:30px;font-weight:600;letter-spacing:-.6px;margin:6px 0 6px}
+.sub{color:var(--gray);font-size:14px;margin-bottom:26px}
+/* busca */
+.search{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:12px;
+background:var(--card);font:inherit;font-size:14px;margin-bottom:26px;outline:none}
+.search:focus{border-color:var(--border-o)}
+/* categorias + grid */
+.cat-h{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+color:var(--gray);margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;
+transition:border-color .16s,transform .14s}
+.card:hover{border-color:var(--border-o);transform:translateY(-2px)}
+.card .ic{font-size:22px}
+.card .lbl{font-weight:600;font-size:15px;letter-spacing:-.1px}
+.card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
+.card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
+.card.ext .go::after{content:" ↗"}
+.empty{color:var(--gray);font-size:13px;padding:14px 2px}
+/* processo */
+.meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}
+.meta b{color:var(--ink);font-weight:600}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+margin:0 0 28px;display:flex;flex-direction:column;gap:7px}
+.toc-h{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+.toc a{font-size:13.5px;text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--orange)}
+.content>*{margin-bottom:18px}
+.b-texto p{font-size:15.5px;margin-bottom:12px}
+.b-texto p:last-child{margin-bottom:0}
+.b-titulo{font-size:20px;font-weight:600;letter-spacing:-.3px;margin:34px 0 12px;
+padding-bottom:8px;border-bottom:1px solid var(--border);scroll-margin-top:20px}
+.b-passos,.b-lista{padding-left:0;list-style:none;counter-reset:step}
+.b-passos li{position:relative;padding:10px 0 10px 44px;font-size:15px;border-bottom:1px solid var(--border)}
+.b-passos li:last-child{border-bottom:0}
+.b-passos li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:9px;
+width:28px;height:28px;background:var(--orange-soft);color:var(--orange);font-weight:600;font-size:13px;
+border-radius:50%;display:flex;align-items:center;justify-content:center}
+.b-lista li{position:relative;padding:6px 0 6px 22px;font-size:15px}
+.b-lista li::before{content:"";position:absolute;left:4px;top:14px;width:6px;height:6px;
+background:var(--orange);border-radius:50%}
+.ratio{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+background:#000;border:1px solid var(--border)}
+.ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.b-imagem img{width:100%;border-radius:12px;border:1px solid var(--border);display:block}
+.legenda{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
+.b-destaque{display:flex;gap:11px;padding:14px 16px;border-radius:12px;font-size:14px;align-items:flex-start}
+.b-destaque .ic{font-size:17px;line-height:1.4}
+.b-destaque.info{background:#eef4ff;border:1px solid #d6e4ff}
+.b-destaque.aviso{background:#fff4e8;border:1px solid #ffd8a8}
+.b-destaque.dica{background:var(--orange-soft);border:1px solid var(--border-o)}
+.b-arquivo{display:inline-flex;gap:8px;padding:11px 16px;background:var(--card);border:1px solid var(--border);
+border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px}
+.b-arquivo:hover{border-color:var(--border-o)}
+.b-divisor{border:0;border-top:1px solid var(--border)}
+code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:.9em;
+font-family:ui-monospace,Menlo,monospace}
+/* copiar link */
+.copybar{position:fixed;right:18px;bottom:18px;z-index:50}
+.copybar button{background:var(--orange);color:#fff;border:0;border-radius:12px;padding:12px 18px;
+font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;box-shadow:0 8px 24px rgba(232,107,42,.35);
+display:flex;align-items:center;gap:8px}
+.copybar button:active{transform:scale(.97)}
+.copybar .ok{background:#1f9d55;box-shadow:0 8px 24px rgba(31,157,85,.35)}
+.foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
+font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}}
+</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="index.html">← Todos os processos</a></div><h1 class="title">Como achar vídeos e imagens impactantes (Marcelo e clientes)</h1><div class="sub">Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.</div><div class="meta"><span>🎬 <b>Produção de Conteúdo</b></span><span>Atualizado em <b>2026-06-10</b></span><span>Por <b>Bruno (MediaGrowth)</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#objetivo">Objetivo</a><a href="#passo-a-passo">Passo a passo</a><a href="#boas-pr-ticas">Boas práticas</a><a href="#o-que-nunca-fazer">❌ O que NUNCA fazer</a><a href="#ferramentas">Ferramentas</a><a href="#exemplo-real-roteiro-do-marcelo-terremoto-tsunami">Exemplo real — roteiro do Marcelo (terremoto / tsunami)</a><a href="#v-deo-do-passo-a-passo">Vídeo do passo a passo</a></nav><div class="content"><div class="b-destaque dica"><span class="ic">💡</span><div><strong>Regra de ouro:</strong> a imagem/vídeo serve pra <strong>ilustrar</strong> o que o cliente fala e <strong>causar impacto</strong> ("nossa, o que é isso?"). Nunca é pegar uma foto de estoque e jogar no vídeo.</div></div>
+<h2 id="objetivo" class="b-titulo">Objetivo</h2>
+<div class="b-texto"><p>Achar imagens e vídeos <strong>impactantes</strong> (na maioria das vezes, <strong>vídeos</strong>) que façam sentido com o <strong>roteiro</strong> — pro Marcelo (oceanógrafo) ou qualquer cliente. Cada cena tem que casar com o que está sendo falado e dar a sensação certa. Conforme você acha, <strong>vai salvando os links</strong> pra reusar nos próximos vídeos.</p></div>
+<h2 id="passo-a-passo" class="b-titulo">Passo a passo</h2>
+<ol class="b-passos"><li><strong>Entenda o roteiro primeiro.</strong> Ouça/leia o que o cliente fala, trecho por trecho.</li><li><strong>Tire as palavras-chave</strong> de cada trecho (ex.: <em>terremoto Filipinas</em>, <em>física geologia</em>, <em>fundo do mar</em>, <em>placas tectônicas</em>).</li><li><strong>Busque primeiro a coisa específica</strong> que ele cita. Não achou? Use um termo mais amplo (ex.: <em>terremoto</em> qualquer, não precisa ser das Filipinas).</li><li><strong>Priorize vídeo</strong> — impacta mais que foto. O <strong>TikTok</strong> quase sempre tem o vídeo certo; busque lá.</li><li><strong>Vá salvando os links</strong> num bloco de notas conforme acha (vira biblioteca pros próximos vídeos).</li><li><strong>Baixe pelo TikTok Downloader:</strong> copia o link do TikTok → cola no TikTok Downloader → Baixar.</li><li>Não achou em português? <strong>Pesquise em inglês.</strong></li><li><strong>Ideal:</strong> um vídeo/imagem que ilustre <strong>duas coisas ao mesmo tempo</strong> (ex.: mar aberto + terremoto) — aí mata a charada.</li></ol>
+<h2 id="boas-pr-ticas" class="b-titulo">Boas práticas</h2>
+<ul class="b-lista"><li><strong>Vídeo &gt; foto.</strong> Sempre que der, vídeo de alto impacto.</li><li>Não precisa ser a imagem <strong>exata</strong> — precisa <strong>ilustrar</strong> e dar a sensação.</li><li>Vale <strong>criatividade e cultura pop / edits</strong> (ex.: Hulk pra "tudo tremendo", cena de filme pra placas tectônicas).</li><li>Tenha <strong>feeling pra precisão:</strong> em tema técnico, cuidado pra não passar <strong>desinformação</strong> (às vezes a imagem precisa ser correta, às vezes não).</li></ul>
+<h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que NUNCA fazer</h2>
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Proibido:</strong> foto <strong>genérica / de estoque</strong>, <strong>FreePik</strong>, <strong>Pexels</strong> ou qualquer banco de imagem free, imagem <strong>sem impacto</strong> ou que <strong>não case</strong> com o roteiro. E <strong>nunca</strong> use imagem tecnicamente errada num tema que exige precisão (desinformação).</div></div>
+<h2 id="ferramentas" class="b-titulo">Ferramentas</h2>
+<ul class="b-lista"><li><strong>TikTok</strong> — fonte principal de vídeo impactante.</li><li><strong>TikTok Downloader</strong> — baixar o vídeo limpo (sem marca-d'água).</li><li><strong>Bloco de notas</strong> — salvar e organizar os links achados.</li><li><strong>Pesquisa em inglês</strong> — quando não achar em PT-BR.</li></ul>
+<h2 id="exemplo-real-roteiro-do-marcelo-terremoto-tsunami" class="b-titulo">Exemplo real — roteiro do Marcelo (terremoto / tsunami)</h2>
+<div class="b-texto"><p>Roteiro: <em>"terremoto de magnitude 7,8 nas Filipinas… não foi coincidência, foi física, foi geologia… um tsunami nasce no fundo do mar… placas tectônicas."</em> Palavras-chave buscadas: <strong>terremoto Filipinas</strong>, <strong>terremoto ao vivo</strong>, <strong>terremoto rápido</strong>, <strong>fundo do mar</strong>, <strong>placas tectônicas</strong>. Cada trecho vira um vídeo impactante que ilustra exatamente o que ele fala.</p></div>
+<h2 id="v-deo-do-passo-a-passo" class="b-titulo">Vídeo do passo a passo</h2>
+<figure class="b-video"><div class="ratio"><video src="https://mediagrowth.com.br/equipe-tutoriais/marcelo-achar-videos.mp4" controls preload="metadata" style="width:100%;height:100%;object-fit:contain;background:#000"></video></div><div class="legenda">Walkthrough completo: garimpando os vídeos do roteiro de terremoto, passo a passo.</div></figure></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
+const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
+try{await navigator.clipboard.writeText(location.href);}catch(e){
+const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
+setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+</script></body></html>
