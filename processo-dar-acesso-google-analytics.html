@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Processos · MediaGrowth</title>
-<meta name="description" content="Central de processos, documentos padronizados e vídeo-tutoriais da equipe.">
-<meta property="og:type" content="website"><meta property="og:title" content="Processos · MediaGrowth">
-<meta property="og:description" content="Central de processos, documentos padronizados e vídeo-tutoriais da equipe.">
+<meta name="robots" content="noindex,nofollow"><title>Como dar acesso ao Google Analytics · Processos MediaGrowth</title>
+<meta name="description" content="Passo a passo pra adicionar alguém como administrador no Google Analytics (GA4) — pela área de Administrador da conta.">
+<meta property="og:type" content="website"><meta property="og:title" content="Como dar acesso ao Google Analytics · Processos MediaGrowth">
+<meta property="og:description" content="Passo a passo pra adicionar alguém como administrador no Google Analytics (GA4) — pela área de Administrador da conta.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -114,48 +114,19 @@ display:flex;align-items:center;gap:8px}
 .foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
 font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
 @media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}}
-</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span></div><h1 class="title">Processos · MediaGrowth</h1><div class="sub">Central de processos, documentos padronizados e vídeo-tutoriais da equipe.</div><input class="search" id="q" placeholder="🔎 Buscar processo..." autocomplete="off"><div id="view-cats"><div class="cat-grid"><button class="cat-box" data-cat="comece-aqui" data-name="comece por aqui"><span class="cat-emoji">🚀</span><span class="cat-name">Comece por aqui</span><span class="cat-count">1 processo</span></button><button class="cat-box" data-cat="producao" data-name="produção de conteúdo"><span class="cat-emoji">🎬</span><span class="cat-name">Produção de Conteúdo</span><span class="cat-count">1 processo</span></button><button class="cat-box" data-cat="operacao" data-name="operação"><span class="cat-emoji">⚙️</span><span class="cat-name">Operação</span><span class="cat-count">1 processo</span></button><button class="cat-box" data-cat="crm" data-name="crm"><span class="cat-emoji">📇</span><span class="cat-name">CRM</span><span class="cat-count">1 processo</span></button></div></div><div id="view-list" hidden><button class="back-cats" id="backCats">← Todas as categorias</button><div class="list-h" id="listH"></div><div class="grid" id="listGrid"></div><div class="empty" id="empty" hidden>Nenhum processo encontrado.</div></div><div id="pool" hidden><a class="card" data-cat="comece-aqui" href="processo-como-usar-a-central.html" data-name="como usar a central de processos o que é, pra que serve e como navegar por esta central."><span class="ic">🧭</span><span class="lbl">Como usar a Central de Processos</span><span class="desc">O que é, pra que serve e como navegar por esta central.</span><span class="go">Abrir processo →</span></a><a class="card" data-cat="producao" href="processo-achar-videos-impactantes-marcelo.html" data-name="como achar vídeos e imagens impactantes (marcelo e clientes) como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar."><div class="card-cover"><img src="assets/achar-videos-impactantes-marcelo-capa.jpg" loading="lazy" alt=""><span class="play">▶</span></div><span class="ic">🎬</span><span class="lbl">Como achar vídeos e imagens impactantes (Marcelo e clientes)</span><span class="desc">Como garimpar os vídeos/imagens que ilustram o roteiro e causam impacto — e o que é proibido usar.</span><span class="go">Abrir processo →</span></a><a class="card" data-cat="operacao" href="processo-dar-acesso-google-analytics.html" data-name="como dar acesso ao google analytics passo a passo pra adicionar alguém como administrador no google analytics (ga4) — pela área de administrador da conta."><div class="card-cover"><img src="assets/dar-acesso-google-analytics-capa.jpg" loading="lazy" alt=""><span class="play">▶</span></div><span class="ic">📊</span><span class="lbl">Como dar acesso ao Google Analytics</span><span class="desc">Passo a passo pra adicionar alguém como administrador no Google Analytics (GA4) — pela área de Administrador da conta.</span><span class="go">Abrir processo →</span></a><a class="card ext" data-cat="crm" href="https://treinamento.mediagrowth.com.br/" target="_blank" rel="noopener" data-name="treinamento crm (vídeos) tutoriais em vídeo do crm — conversas, oportunidades, acesso e mais."><span class="ic">🎓</span><span class="lbl">Treinamento CRM (vídeos) <span class="ext-tag">↗</span></span><span class="desc">Tutoriais em vídeo do CRM — conversas, oportunidades, acesso e mais.</span><span class="go">Abrir ↗</span></a></div><div class="foot">MediaGrowth · Central de Processos</div></div><script>
-const CAT_META = {"comece-aqui": {"icone": "🚀", "nome": "Comece por aqui"}, "producao": {"icone": "🎬", "nome": "Produção de Conteúdo"}, "operacao": {"icone": "⚙️", "nome": "Operação"}, "comercial": {"icone": "💼", "nome": "Comercial"}, "crm": {"icone": "📇", "nome": "CRM"}};
-const q=document.getElementById('q');
-const viewCats=document.getElementById('view-cats');
-const viewList=document.getElementById('view-list');
-const listH=document.getElementById('listH');
-const listGrid=document.getElementById('listGrid');
-const backBtn=document.getElementById('backCats');
-const empty=document.getElementById('empty');
-const allCards=[...document.getElementById('pool').querySelectorAll('.card')];
-
-function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function fill(cards){
-  listGrid.innerHTML='';
-  cards.forEach(c=>listGrid.appendChild(c.cloneNode(true)));
-  empty.hidden = cards.length>0;
-}
-function showCats(){
-  viewList.hidden=true; viewCats.hidden=false;
-  if(location.hash) history.replaceState(null,'',location.pathname);
-  window.scrollTo({top:0});
-}
-function openCat(catId){
-  const m=CAT_META[catId]||{icone:'',nome:catId};
-  backBtn.hidden=false;
-  listH.innerHTML=`<span class="list-emoji">${m.icone||'📁'}</span> ${esc(m.nome||'')}`;
-  fill(allCards.filter(c=>c.dataset.cat===catId));
-  viewCats.hidden=true; viewList.hidden=false;
-  history.replaceState(null,'','#'+catId);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function doSearch(t){
-  t=(t||'').trim().toLowerCase();
-  if(!t){ const h=location.hash.replace('#',''); if(h&&CAT_META[h])openCat(h); else showCats(); return; }
-  backBtn.hidden=true;
-  listH.innerHTML=`<span class="list-emoji">🔎</span> Resultados para "${esc(t)}"`;
-  fill(allCards.filter(c=>(c.dataset.name||'').includes(t)));
-  viewCats.hidden=true; viewList.hidden=false;
-}
-
-viewCats.addEventListener('click',e=>{const b=e.target.closest('.cat-box');if(b)openCat(b.dataset.cat);});
-backBtn.addEventListener('click',()=>{q.value='';showCats();});
-q.addEventListener('input',()=>doSearch(q.value));
-window.addEventListener('load',()=>{const h=location.hash.replace('#','');if(h&&CAT_META[h])openCat(h);});
+</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="index.html">← Todos os processos</a></div><h1 class="title">Como dar acesso ao Google Analytics</h1><div class="sub">Passo a passo pra adicionar alguém como administrador no Google Analytics (GA4) — pela área de Administrador da conta.</div><div class="meta"><span>⚙️ <b>Operação</b></span><span>Atualizado em <b>2026-06-15</b></span><span>Por <b>Bruno (MediaGrowth)</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#objetivo">Objetivo</a><a href="#passo-a-passo">Passo a passo</a><a href="#boas-pr-ticas">Boas práticas</a><a href="#o-que-nunca-fazer">❌ O que NUNCA fazer</a></nav><div class="content"><div class="b-destaque dica"><span class="ic">💡</span><div><strong>Regra de ouro:</strong> o acesso é liberado na área <strong>Administrador</strong> da conta e sempre como <strong>Administrador</strong> — só assim a equipe consegue configurar conversões, públicos e integrações. Acesso de leitor trava o trabalho.</div></div>
+<figure class="b-video"><div class="ratio"><iframe src="https://www.youtube.com/embed/KJtVlU_ahsU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="legenda">Assista o passo a passo completo: adicionando um administrador no Google Analytics.</div></figure>
+<h2 id="objetivo" class="b-titulo">Objetivo</h2>
+<div class="b-texto"><p>Liberar o acesso de <strong>outra pessoa</strong> (a MediaGrowth, por exemplo) à conta do <strong>Google Analytics</strong>, com permissão de <strong>Administrador</strong>. Você precisa estar logado na conta que é <strong>dona</strong> da propriedade.</p></div>
+<h2 id="passo-a-passo" class="b-titulo">Passo a passo</h2>
+<ol class="b-passos"><li>Entre no <strong>Google Analytics</strong> logado no e-mail que tem o acesso à conta.</li><li>No canto <strong>inferior esquerdo</strong>, clique em <strong>Administrador</strong> (ícone de engrenagem ⚙️).</li><li>Em <strong>Configurações da conta</strong>, clique em <strong>Conta</strong> e depois em <strong>Gerenciamento de acesso à conta</strong>.</li><li>Clique no botão <strong>+</strong> (azul, canto superior direito) e escolha <strong>Adicionar usuários</strong>.</li><li><strong>Cole o e-mail</strong> da pessoa que vai receber o acesso.</li><li>Marque a função <strong>Administrador</strong>.</li><li>Clique em <strong>Adicionar</strong>. Pronto — a pessoa recebe um e-mail e já tem acesso.</li></ol>
+<h2 id="boas-pr-ticas" class="b-titulo">Boas práticas</h2>
+<ul class="b-lista"><li>Dê o acesso no nível de <strong>Conta</strong> (e não só de propriedade) — assim cobre todas as propriedades de uma vez.</li><li>Sempre como <strong>Administrador</strong> quando for pra equipe trabalhar (configurar, integrar, criar públicos).</li><li><strong>Confira o e-mail</strong> letra por letra antes de adicionar — tem que ser o e-mail Google correto.</li><li>Avise a pessoa que ela vai receber um <strong>e-mail de notificação</strong> do Google.</li></ul>
+<h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que NUNCA fazer</h2>
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Não</strong> dê acesso só de <strong>Leitor/Analista</strong> quando a equipe precisa configurar (vai travar tudo). <strong>Não</strong> digite o e-mail errado. E <strong>nunca</strong> remova o acesso do próprio dono da conta.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
+const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
+try{await navigator.clipboard.writeText(location.href);}catch(e){
+const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
+setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
 </script></body></html>
