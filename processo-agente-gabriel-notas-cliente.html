@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Bloco de Notas por Cliente · Processos MediaGrowth</title>
+<meta name="description" content="Solta a informação que ele não esquece: vira uma nota organizada e arquivada na pasta do cliente certo, fácil de achar depois.">
+<meta property="og:type" content="website"><meta property="og:title" content="Bloco de Notas por Cliente · Processos MediaGrowth">
+<meta property="og:description" content="Solta a informação que ele não esquece: vira uma nota organizada e arquivada na pasta do cliente certo, fácil de achar depois.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#EEF2F7;--card:#fff;--orange:#E86B2A;--orange-soft:rgba(232,107,42,.10);
+--border:rgba(0,0,0,.08);--border-o:rgba(232,107,42,.30);--ink:#16181d;--gray:#8a909a}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+min-height:100dvh;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px 80px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.logo-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;
+box-shadow:0 0 0 3px var(--orange-soft);flex-shrink:0}
+.logo-text{font-weight:600;font-size:15px;letter-spacing:-.2px}
+.topbar .sep{flex:1}
+.topbar a.back{font-size:13px;color:var(--gray);text-decoration:none;font-weight:500}
+.topbar a.back:hover{color:var(--ink)}
+h1.title{font-size:30px;font-weight:600;letter-spacing:-.6px;margin:6px 0 6px}
+.sub{color:var(--gray);font-size:14px;margin-bottom:26px}
+/* busca */
+.search{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:12px;
+background:var(--card);font:inherit;font-size:14px;margin-bottom:26px;outline:none}
+.search:focus{border-color:var(--border-o)}
+/* categorias + grid */
+.cat-h{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+color:var(--gray);margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;
+transition:border-color .16s,transform .14s}
+.card:hover{border-color:var(--border-o);transform:translateY(-2px)}
+.card-cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+border:1px solid var(--border);background:#0a0a0c;margin-bottom:4px}
+.card-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.card:hover .card-cover img{transform:scale(1.04)}
+.card-cover .play{position:absolute;inset:0;margin:auto;width:46px;height:46px;display:flex;
+align-items:center;justify-content:center;background:rgba(0,0,0,.55);color:#fff;border-radius:50%;
+font-size:16px;padding-left:3px;backdrop-filter:blur(2px)}
+.card .ic{font-size:22px}
+.card .lbl{font-weight:600;font-size:15px;letter-spacing:-.1px}
+.card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
+.card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
+.card.ext .go::after{content:" ↗"}
+/* nível 1 — caixas de categoria (grid clicável) */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.cat-box{appearance:none;cursor:pointer;text-align:left;background:var(--card);border:1px solid var(--border);
+border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;gap:9px;font:inherit;color:inherit;
+transition:border-color .16s,transform .14s,box-shadow .16s}
+.cat-box:hover{border-color:var(--border-o);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.cat-emoji{font-size:42px;line-height:1}
+.cat-name{font-size:16.5px;font-weight:600;letter-spacing:-.2px}
+.cat-count{font-size:12px;color:var(--gray);font-weight:500;display:flex;align-items:center;gap:5px}
+.cat-count::after{content:"abrir →";margin-left:auto;color:var(--orange);font-weight:600;opacity:0;transition:opacity .15s}
+.cat-box:hover .cat-count::after{opacity:1}
+/* nível 2 — voltar + cabeçalho da categoria */
+.back-cats{appearance:none;cursor:pointer;background:none;border:0;color:var(--gray);font:inherit;font-size:13px;
+font-weight:500;padding:5px 0;margin-bottom:8px;display:inline-flex;align-items:center;gap:5px}
+.back-cats:hover{color:var(--ink)}
+.list-h{font-size:23px;font-weight:600;letter-spacing:-.3px;margin:2px 0 20px;display:flex;align-items:center;gap:11px}
+.list-h .list-emoji{font-size:28px}
+.ext-tag{font-size:11px;color:var(--orange)}
+.empty{color:var(--gray);font-size:13px;padding:14px 2px}
+/* processo */
+.meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}
+.meta b{color:var(--ink);font-weight:600}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+margin:0 0 28px;display:flex;flex-direction:column;gap:7px}
+.toc-h{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+.toc a{font-size:13.5px;text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--orange)}
+.content>*{margin-bottom:18px}
+.b-texto p{font-size:15.5px;margin-bottom:12px}
+.b-texto p:last-child{margin-bottom:0}
+.b-titulo{font-size:20px;font-weight:600;letter-spacing:-.3px;margin:34px 0 12px;
+padding-bottom:8px;border-bottom:1px solid var(--border);scroll-margin-top:20px}
+.b-passos,.b-lista{padding-left:0;list-style:none;counter-reset:step}
+.b-passos li{position:relative;padding:10px 0 10px 44px;font-size:15px;border-bottom:1px solid var(--border)}
+.b-passos li:last-child{border-bottom:0}
+.b-passos li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:9px;
+width:28px;height:28px;background:var(--orange-soft);color:var(--orange);font-weight:600;font-size:13px;
+border-radius:50%;display:flex;align-items:center;justify-content:center}
+.b-lista li{position:relative;padding:6px 0 6px 22px;font-size:15px}
+.b-lista li::before{content:"";position:absolute;left:4px;top:14px;width:6px;height:6px;
+background:var(--orange);border-radius:50%}
+.ratio{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+background:#000;border:1px solid var(--border)}
+.ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.b-imagem img{width:100%;border-radius:12px;border:1px solid var(--border);display:block}
+.legenda{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
+.b-galeria{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:8px 0}
+.b-galeria figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.b-galeria a{display:block;line-height:0}
+.b-galeria img{max-height:360px;max-width:240px;width:auto;height:auto;border-radius:12px;
+border:1px solid var(--border);display:block;cursor:zoom-in;transition:transform .2s}
+.b-galeria img:hover{transform:scale(1.03)}
+.b-galeria .legenda{margin-top:0;max-width:240px}
+@media(max-width:600px){.b-galeria{gap:10px}.b-galeria img{max-height:300px;max-width:44vw}}
+.b-destaque{display:flex;gap:11px;padding:14px 16px;border-radius:12px;font-size:14px;align-items:flex-start}
+.b-destaque .ic{font-size:17px;line-height:1.4}
+.b-destaque.info{background:#eef4ff;border:1px solid #d6e4ff}
+.b-destaque.aviso{background:#fff4e8;border:1px solid #ffd8a8}
+.b-destaque.dica{background:var(--orange-soft);border:1px solid var(--border-o)}
+.b-arquivo{display:inline-flex;gap:8px;padding:11px 16px;background:var(--card);border:1px solid var(--border);
+border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px}
+.b-arquivo:hover{border-color:var(--border-o)}
+.b-divisor{border:0;border-top:1px solid var(--border)}
+code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:.9em;
+font-family:ui-monospace,Menlo,monospace}
+/* copiar link */
+.copybar{position:fixed;right:18px;bottom:18px;z-index:50}
+.copybar button{background:var(--orange);color:#fff;border:0;border-radius:12px;padding:12px 18px;
+font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;box-shadow:0 8px 24px rgba(232,107,42,.35);
+display:flex;align-items:center;gap:8px}
+.copybar button:active{transform:scale(.97)}
+.copybar .ok{background:#1f9d55;box-shadow:0 8px 24px rgba(31,157,85,.35)}
+.foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
+font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
+/* ===== Documentação de Agente / Skill ===== */
+/* hero no topo da página */
+.agent-hero{display:flex;gap:18px;align-items:center;background:var(--card);
+border:1px solid var(--border);border-left:4px solid var(--accent,var(--orange));
+border-radius:16px;padding:18px 20px;margin:4px 0 24px}
+.hero-foto{width:84px;height:84px;border-radius:16px;object-fit:cover;flex-shrink:0;
+border:2px solid var(--accent,var(--orange));background:#f3f4f6}
+.hero-info{display:flex;flex-direction:column;gap:5px;min-width:0}
+.hero-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-badge{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+color:#fff;background:var(--accent,var(--orange));padding:3px 9px;border-radius:20px}
+.hero-skill{font-size:11px;color:var(--gray);font-family:ui-monospace,Menlo,monospace;
+background:rgba(0,0,0,.05);padding:3px 8px;border-radius:6px}
+.hero-nome{font-size:21px;font-weight:700;letter-spacing:-.3px}
+.hero-cargo{font-weight:500;color:var(--gray);font-size:15px}
+.hero-skillname{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:3px}
+.hero-line{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;margin-top:3px}
+.hero-lbl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+color:var(--gray);padding-top:4px;min-width:74px}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.hero-tag{font-size:12px;font-weight:500;color:var(--accent,var(--orange));
+background:rgba(232,107,42,.10);border:1px solid var(--border-o);padding:3px 10px;border-radius:20px}
+.hero-tags code{background:rgba(0,0,0,.05);font-size:11.5px;padding:2px 7px;border-radius:6px}
+/* bloco de parâmetros (variáveis que dá pra pedir) */
+.b-parametros{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--card)}
+.p-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.p-row:last-child{border-bottom:0}
+.p-nome{font-weight:600;font-size:14px;color:var(--ink)}
+.p-desc{font-size:14px;color:#3d424c}
+.p-ex{margin-top:5px;font-size:12.5px;color:var(--gray);font-style:italic}
+/* bloco de exemplo (pedido → entrega) */
+.b-exemplo{display:flex;flex-direction:column;gap:10px;background:var(--card);
+border:1px solid var(--border);border-radius:14px;padding:16px}
+.ex-ped,.ex-ent{display:flex;flex-direction:column;gap:6px}
+.ex-tag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+color:var(--gray);background:rgba(0,0,0,.05);padding:3px 9px;border-radius:20px}
+.ex-tag.ent{color:#fff;background:var(--orange)}
+.ex-ped>div{font-size:14.5px;background:#eef4ff;border:1px solid #d6e4ff;border-radius:10px;padding:10px 13px}
+.ex-ent>div p{font-size:14.5px;margin-bottom:8px}
+.ex-ent>div p:last-child{margin-bottom:0}
+/* card de agente na grade */
+.card-agent .ag-cover{position:relative;width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;
+border:1px solid var(--border);background:linear-gradient(135deg,rgba(232,107,42,.10),rgba(0,0,0,.03));margin-bottom:4px}
+.card-agent .ag-cover img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .25s}
+.card-agent:hover .ag-cover img{transform:scale(1.04)}
+.card-agent .ag-badge{position:absolute;top:8px;left:8px;width:30px;height:30px;display:flex;
+align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:9px;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.card-agent{border-top:3px solid var(--accent,var(--orange))}
+.card-agent .ag-who{font-size:12.5px;color:var(--accent,var(--orange));font-weight:600}
+.card-agent .ag-who b{font-weight:700}
+/* link de volta dentro do header da skill */
+.hero-back{margin-left:auto;font-size:12px;color:var(--gray);text-decoration:none;font-weight:500;white-space:nowrap}
+.hero-back:hover{color:var(--accent,var(--orange))}
+/* header do painel do agente (foto maior) */
+.agent-hero.panel{align-items:flex-start}
+.hero-foto.big{width:96px;height:96px;border-radius:18px}
+/* card de skill no painel do agente */
+.card-skill{border-top:3px solid var(--accent,var(--orange))}
+.card-skill .ic{font-size:24px}
+.card-skill .go{color:var(--accent,var(--orange))}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}
+.agent-hero{flex-direction:column;align-items:flex-start}.p-row{grid-template-columns:1fr;gap:4px}}
+</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="agente-gabriel.html">← Skills da Gabriel</a></div><h1 class="title">Bloco de Notas por Cliente</h1><div class="sub">Solta a informação que ele não esquece: vira uma nota organizada e arquivada na pasta do cliente certo, fácil de achar depois.</div><div class="agent-hero" style="--accent:#3b82f6"><img class="hero-foto" src="assets/gabriel.png" alt="Gabriel" loading="lazy"><div class="hero-info"><div class="hero-top"><span class="hero-badge">🤖 Agente · Skill</span><span class="hero-skill">⚙️ gabriel-notas-cliente.md</span><a class="hero-back" href="agente-gabriel.html">← Skills da Gabriel</a></div><div class="hero-nome">Gabriel<span class="hero-cargo"> · Gerente de Clientes</span></div><div class="hero-skillname">Notas por Cliente</div><div class="hero-line"><span class="hero-lbl">Acessa</span><div class="hero-tags"><span class="hero-tag">Pasta clientes/[NN]/notas/</span><span class="hero-tag">CLIENTE.md</span><span class="hero-tag">HISTORICO.md do cliente</span></div></div><div class="hero-line"><span class="hero-lbl">Aciona com</span><div class="hero-tags"><code>@gabriel</code><code>anota isso pro [cliente]</code><code>registra/salva como nota</code><code>vincula essa informacao ao cliente</code></div></div></div></div><div class="meta"><span>🤖 <b>Agentes &amp; Skills</b></span><span>Atualizado em <b>2026-06-26</b></span><span>Por <b>MediaGrowth</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#1-o-que-acessa-e-o-que-faz">1 · O que acessa e o que faz</a><a href="#2-tudo-que-voc-pode-pedir">2 · Tudo que você pode pedir</a><a href="#3-como-funciona-como-tirar-o-melhor">3 · Como funciona + como tirar o melhor</a><a href="#4-quais-respostas-esperar">4 · Quais respostas esperar</a></nav><div class="content"><h2 id="1-o-que-acessa-e-o-que-faz" class="b-titulo">1 · O que acessa e o que faz</h2>
+<div class="b-texto"><p>O Gabriel transforma uma informação solta numa nota limpa e organizada dentro da pasta do cliente. Ele nunca cola o texto bruto: resume, estrutura (contexto, pontos, próximos passos) e salva com um nome de arquivo que diz o assunto em 4-6 palavras.</p></div>
+<ul class="b-lista"><li>Salva em clientes/[NN]/notas/ com nome DD-MM-AAAA--resumo-em-kebab.md</li><li>Identifica o cliente pelo contexto; se não houver CLIENTE.md, aciona antes o gabriel-client-organizer</li><li>Registra a nota no HISTORICO.md do cliente pra deixar rastro</li><li>NUNCA salva na raiz nem copia o input bruto — sempre organiza e pole antes</li><li>Se a nota não for clara de qual cliente é, pergunta antes de salvar</li></ul>
+<h2 id="2-tudo-que-voc-pode-pedir" class="b-titulo">2 · Tudo que você pode pedir</h2>
+<div class="b-parametros"><div class="p-row"><div class="p-nome">Conteúdo da nota</div><div class="p-desc">O que você quer guardar — ele resume e estrutura mantendo fiel ao que você disse<div class="p-ex">anota que o cliente quer trocar o CTA pra WhatsApp</div></div></div><div class="p-row"><div class="p-nome">Cliente</div><div class="p-desc">Define em qual pasta a nota é arquivada<div class="p-ex">registra essa nota pro Tiger Saut</div></div></div><div class="p-row"><div class="p-nome">Próximos passos</div><div class="p-desc">Se você mencionar ações, viram checklist dentro da nota<div class="p-ex">lembra de cobrar o material do cliente na sexta</div></div></div></div>
+<h2 id="3-como-funciona-como-tirar-o-melhor" class="b-titulo">3 · Como funciona + como tirar o melhor</h2>
+<ol class="b-passos"><li>Identifica o cliente e garante que a pasta notas/ existe (cria silenciosamente se faltar)</li><li>Organiza o conteúdo: contexto, pontos principais e próximos passos, sem inventar</li><li>Gera o nome do arquivo com data + resumo em 4-6 palavras em kebab-case sem acento</li><li>Salva no template padrão e adiciona a linha no HISTORICO.md</li><li>Confirma o caminho exato onde a nota foi salva</li></ol>
+<ul class="b-lista"><li>Fale o cliente junto da nota pra ele não precisar perguntar</li><li>Se mencionar uma ação, ela vira item de checklist nos Próximos Passos</li><li>Mesmo assunto no mesmo dia? Ele pergunta se atualiza a nota existente ou cria nova</li></ul>
+<h2 id="4-quais-respostas-esperar" class="b-titulo">4 · Quais respostas esperar</h2>
+<div class="b-texto"><p>Um arquivo .md organizado na pasta notas/ do cliente (título, data, conteúdo estruturado, próximos passos e observações), a entrada nova no HISTORICO.md e a confirmação com o caminho completo do arquivo.</p></div>
+<div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>anota pro Tiger Saut que na reuniao decidiram ajustar a paleta de cores</div></div><div class="ex-ent"><span class="ex-tag ent">gabriel</span><div><p>Nota salva em clientes/11_tiger_saut/notas/2026-06-26--reuniao-ajuste-paleta-cores.md com o conteúdo organizado, registrada no HISTORICO.md, e o caminho confirmado.</p></div></div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
+const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
+try{await navigator.clipboard.writeText(location.href);}catch(e){
+const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
+setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+</script></body></html>
