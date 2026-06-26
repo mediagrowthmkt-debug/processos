@@ -95,12 +95,26 @@ background:#000;border:1px solid var(--border)}
 .legenda{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
 .b-galeria{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:8px 0}
 .b-galeria figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
-.b-galeria a{display:block;line-height:0}
+.zoomwrap{position:relative;display:inline-block;line-height:0}
+.b-galeria img,.b-imagem img.lb-zoomable{cursor:zoom-in}
 .b-galeria img{max-height:360px;max-width:240px;width:auto;height:auto;border-radius:12px;
-border:1px solid var(--border);display:block;cursor:zoom-in;transition:transform .2s}
-.b-galeria img:hover{transform:scale(1.03)}
+border:1px solid var(--border);display:block;transition:transform .2s}
+.zoomwrap:hover img{transform:scale(1.03)}
+.zoombadge{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;
+background:rgba(15,17,23,.74);color:#fff;display:flex;align-items:center;justify-content:center;
+font-size:14px;cursor:zoom-in;opacity:0;transition:opacity .18s;backdrop-filter:blur(2px);pointer-events:auto}
+.zoomwrap:hover .zoombadge{opacity:1}
 .b-galeria .legenda{margin-top:0;max-width:240px}
-@media(max-width:600px){.b-galeria{gap:10px}.b-galeria img{max-height:300px;max-width:44vw}}
+@media(max-width:600px){.b-galeria{gap:10px}.b-galeria img{max-height:300px;max-width:44vw}.zoombadge{opacity:.85}}
+.lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+background:rgba(8,9,13,.94);cursor:zoom-out;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:10px;box-shadow:0 18px 70px #000c;
+cursor:zoom-in;transition:transform .2s;will-change:transform}
+.lightbox img.zoom{transform:scale(1.9);cursor:zoom-out;max-width:none;max-height:none}
+.lb-close{position:fixed;top:18px;right:24px;width:42px;height:42px;border:0;border-radius:50%;
+background:rgba(255,255,255,.12);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:10000}
+.lb-close:hover{background:rgba(255,255,255,.24)}
 .b-destaque{display:flex;gap:11px;padding:14px 16px;border-radius:12px;font-size:14px;align-items:flex-start}
 .b-destaque .ic{font-size:17px;line-height:1.4}
 .b-destaque.info{background:#eef4ff;border:1px solid #d6e4ff}
@@ -183,7 +197,23 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 .card-skill .go{color:var(--accent,var(--orange))}
 @media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}
 .agent-hero{flex-direction:column;align-items:flex-start}.p-row{grid-template-columns:1fr;gap:4px}}
-</style></head><body><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="agente-helena.html">← Skills da Helena</a></div><h1 class="title">Relatório de Desempenho do Google Business</h1><div class="sub">Tira o raio-x mensal do Google Meu Negócio do cliente — interações, chamadas, rotas, cliques no site e avaliações — em PDF pronto, com screenshot de cada aba como prova.</div><div class="agent-hero" style="--accent:#7c3aed"><img class="hero-foto" src="assets/helena.png" alt="Helena" loading="lazy"><div class="hero-info"><div class="hero-top"><span class="hero-badge">🤖 Agente · Skill</span><span class="hero-skill">⚙️ helena-google-business-relatorio.md</span><a class="hero-back" href="agente-helena.html">← Skills da Helena</a></div><div class="hero-nome">Helena<span class="hero-cargo"> · Social Media Strategist</span></div><div class="hero-skillname">Relatório Google Business</div><div class="hero-line"><span class="hero-lbl">Acessa</span><div class="hero-tags"><span class="hero-tag">AdsPower (perfil que gerencia o GMB)</span><span class="hero-tag">Painel Sua empresa no Google (Desempenho)</span><span class="hero-tag">Playwright via CDP</span><span class="hero-tag">gerar-pdf.md</span><span class="hero-tag">CLIENTE.md</span></div></div><div class="hero-line"><span class="hero-lbl">Aciona com</span><div class="hero-tags"><code>@helena</code><code>relatório do Google Business do [cliente]</code><code>puxa as visualizações do Google do [cliente]</code><code>desempenho do GMB do [cliente]</code></div></div></div></div><div class="meta"><span>🤖 <b>Agentes &amp; Skills</b></span><span>Atualizado em <b>2026-06-26</b></span><span>Por <b>MediaGrowth</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#1-o-que-acessa-e-o-que-faz">1 · O que acessa e o que faz</a><a href="#2-tudo-que-voc-pode-pedir">2 · Tudo que você pode pedir</a><a href="#3-como-funciona-como-tirar-o-melhor">3 · Como funciona + como tirar o melhor</a><a href="#4-quais-respostas-esperar">4 · Quais respostas esperar</a><a href="#exemplo-real-do-resultado">📸 Exemplo real do resultado</a></nav><div class="content"><h2 id="1-o-que-acessa-e-o-que-faz" class="b-titulo">1 · O que acessa e o que faz</h2>
+</style></head><body>
+<div id="lb" class="lightbox" aria-hidden="true"><button class="lb-close" aria-label="Fechar">&times;</button><img id="lb-img" alt=""></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=document.getElementById('lb-img'), zoom=false;
+  function openLb(src){im.src=src; zoom=false; im.classList.remove('zoom'); lb.classList.add('open'); document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open'); im.removeAttribute('src'); document.body.style.overflow='';}
+  document.addEventListener('click', function(e){
+    var t=e.target;
+    if(t.classList && t.classList.contains('lb-zoomable')){ e.preventDefault(); openLb(t.currentSrc||t.src); return; }
+    if(t.classList && t.classList.contains('zoombadge')){ var img=t.parentNode.querySelector('img'); if(img){ e.preventDefault(); openLb(img.currentSrc||img.src); } return; }
+    if(t.id==='lb-img'){ zoom=!zoom; im.classList.toggle('zoom', zoom); return; }
+    if(t.id==='lb' || (t.classList && t.classList.contains('lb-close'))){ closeLb(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) closeLb(); });
+})();
+</script><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="agente-helena.html">← Skills da Helena</a></div><h1 class="title">Relatório de Desempenho do Google Business</h1><div class="sub">Tira o raio-x mensal do Google Meu Negócio do cliente — interações, chamadas, rotas, cliques no site e avaliações — em PDF pronto, com screenshot de cada aba como prova.</div><div class="agent-hero" style="--accent:#7c3aed"><img class="hero-foto" src="assets/helena.png" alt="Helena" loading="lazy"><div class="hero-info"><div class="hero-top"><span class="hero-badge">🤖 Agente · Skill</span><span class="hero-skill">⚙️ helena-google-business-relatorio.md</span><a class="hero-back" href="agente-helena.html">← Skills da Helena</a></div><div class="hero-nome">Helena<span class="hero-cargo"> · Social Media Strategist</span></div><div class="hero-skillname">Relatório Google Business</div><div class="hero-line"><span class="hero-lbl">Acessa</span><div class="hero-tags"><span class="hero-tag">AdsPower (perfil que gerencia o GMB)</span><span class="hero-tag">Painel Sua empresa no Google (Desempenho)</span><span class="hero-tag">Playwright via CDP</span><span class="hero-tag">gerar-pdf.md</span><span class="hero-tag">CLIENTE.md</span></div></div><div class="hero-line"><span class="hero-lbl">Aciona com</span><div class="hero-tags"><code>@helena</code><code>relatório do Google Business do [cliente]</code><code>puxa as visualizações do Google do [cliente]</code><code>desempenho do GMB do [cliente]</code></div></div></div></div><div class="meta"><span>🤖 <b>Agentes &amp; Skills</b></span><span>Atualizado em <b>2026-06-26</b></span><span>Por <b>MediaGrowth</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#1-o-que-acessa-e-o-que-faz">1 · O que acessa e o que faz</a><a href="#2-tudo-que-voc-pode-pedir">2 · Tudo que você pode pedir</a><a href="#3-como-funciona-como-tirar-o-melhor">3 · Como funciona + como tirar o melhor</a><a href="#4-quais-respostas-esperar">4 · Quais respostas esperar</a><a href="#exemplo-real-do-resultado">📸 Exemplo real do resultado</a></nav><div class="content"><h2 id="1-o-que-acessa-e-o-que-faz" class="b-titulo">1 · O que acessa e o que faz</h2>
 <div class="b-texto"><p>A Helena abre o painel 'Sua empresa no Google' pelo perfil AdsPower que gerencia o GMB, entra na tela de Desempenho, escolhe o mês e extrai as métricas reais: interações no perfil, chamadas, agendamentos, solicitações de rotas, cliques no site e as avaliações (total + nota). De cada aba tira um screenshot como evidência e devolve tudo em relatório markdown + PDF.</p></div>
 <ul class="b-lista"><li>Acessa o painel oficial do GMB via AdsPower + reproduz o fluxo de 13 cliques do tutorial-fonte com comportamento humano</li><li>Limite: o picker do Google mostra só os últimos 6 meses — mês mais antigo retorna 'fora da grade visível'</li><li>NÃO publica fotos (isso é helena-google-business-fotos), NÃO mede ranking de Maps (Brian/Local Falcon)</li><li>NÃO traz campanha paga (isso é a Jessica / análise de Ads)</li></ul>
 <h2 id="2-tudo-que-voc-pode-pedir" class="b-titulo">2 · Tudo que você pode pedir</h2>
@@ -196,7 +226,7 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>Helena, puxa as visualizações do Google da Mediagrowth de abril</div></div><div class="ex-ent"><span class="ex-tag ent">helena</span><div><p>Relatório de Abril/2026 em PDF com interações, chamadas, rotas, cliques no site, nota das avaliações e screenshots de cada aba, salvo na pasta da Mediagrowth e aberto na tela.</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Relatório de desempenho do Google Business da própria MediaGrowth (abril de 2026), com as métricas do mês e a nota de avaliações em estrelas.</p></div>
-<div class="b-galeria"><figure><a href="assets/ex/helena-google-business-relatorio-01.jpg" target="_blank" rel="noopener"><img src="assets/ex/helena-google-business-relatorio-01.jpg" alt="Tabela de métricas do mês (interações, orientações, cliques) + avaliações no Google e caminhos dos screenshots." loading="lazy"></a><figcaption class="legenda">Tabela de métricas do mês (interações, orientações, cliques) + avaliações no Google e caminhos dos screenshots.</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/helena-google-business-relatorio-01.jpg" alt="Tabela de métricas do mês (interações, orientações, cliques) + avaliações no Google e caminhos dos screenshots." loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Tabela de métricas do mês (interações, orientações, cliques) + avaliações no Google e caminhos dos screenshots.</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
 const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
 try{await navigator.clipboard.writeText(location.href);}catch(e){
 const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
