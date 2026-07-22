@@ -230,10 +230,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="boas-pr-ticas" class="b-titulo">Boas práticas</h2>
 <ul class="b-lista"><li>Gerencie <strong>sempre pelo Admin Console</strong> logado na conta administradora — é de lá que se controla todos os e-mails.</li><li>Crie uma senha <strong>forte</strong> (letras, números e símbolo) e <strong>anote antes de fechar</strong> a tela.</li><li>Confirme que selecionou o <strong>usuário certo</strong> antes de clicar em Reset.</li><li>Sempre que possível, marque para o usuário <strong>trocar a senha no primeiro acesso</strong>.</li></ul>
 <h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que NUNCA fazer</h2>
-<div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Não</strong> redefina a senha do <strong>usuário errado</strong> (confira o nome antes). <strong>Não</strong> compartilhe a senha em <strong>grupo</strong> ou canal público — só direto com a pessoa. E <strong>nunca</strong> feche a tela sem <strong>registrar</strong> a senha que você criou (se não anotar, perde).</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Não</strong> redefina a senha do <strong>usuário errado</strong> (confira o nome antes). <strong>Não</strong> compartilhe a senha em <strong>grupo</strong> ou canal público — só direto com a pessoa. E <strong>nunca</strong> feche a tela sem <strong>registrar</strong> a senha que você criou (se não anotar, perde).</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-738fd6a738030b21.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

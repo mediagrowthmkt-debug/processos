@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>Mia, cria as capas de redes sociais pra Bronx</div></div><div class="ex-ent"><span class="ex-tag ent">mia</span><div><p>3 conceitos aplicados nas 5 redes default com safe area respeitada, deck PDF pra aprovar de uma vez e PNGs exatos prontos pra subir em cada rede</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Capas de redes sociais para Luiz DeFaria (modelo Blueprint Premium): o mesmo conceito "Built on Trust" adaptado a todas as redes nas dimensões exatas.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/mia-capas-redes-sociais-01.jpg" alt="Grade consolidada das capas em todas as redes" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Grade consolidada das capas em todas as redes</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/mia-capas-redes-sociais-02.jpg" alt="Banner do YouTube no tamanho exato" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Banner do YouTube no tamanho exato</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/mia-capas-redes-sociais-01.jpg" alt="Grade consolidada das capas em todas as redes" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Grade consolidada das capas em todas as redes</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/mia-capas-redes-sociais-02.jpg" alt="Banner do YouTube no tamanho exato" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Banner do YouTube no tamanho exato</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-705fc9b9f088c8b0.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

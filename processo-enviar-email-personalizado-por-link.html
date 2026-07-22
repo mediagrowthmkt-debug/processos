@@ -233,10 +233,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="boas-pr-ticas" class="b-titulo">Boas práticas</h2>
 <ul class="b-lista"><li>Mande <strong>primeiro um teste para você mesmo</strong> e abra no <strong>celular e no computador</strong> antes de disparar para a lista.</li><li>Confira se está <strong>logado na conta certa</strong> (a que deve aparecer como remetente).</li><li>Cole sempre no <strong>corpo</strong> do e-mail, nunca como anexo, para o design aparecer.</li><li>Confira na <strong>prévia</strong> se as imagens carregaram e o botão está clicável antes de enviar.</li><li>Escreva um <strong>assunto curto e chamativo</strong>: é ele que decide se a pessoa abre.</li></ul>
 <h2 id="o-que-nunca-fazer" class="b-titulo">O que nunca fazer</h2>
-<ul class="b-lista"><li><strong>Não cole o link cru</strong> achando que o design vem junto. Tem que ser <strong>Ctrl+A na página aberta</strong> e <strong>Ctrl+V no corpo</strong> do Gmail.</li><li><strong>Não jogue uma lista enorme no campo Para</strong>: todos veem o e-mail de todos. Para muitos destinatários, use <strong>Cco</strong>.</li><li><strong>Não fique editando o design dentro do Gmail</strong> linha por linha. Se precisa mudar o conteúdo, ajuste <strong>na página fonte</strong> e copie de novo.</li><li><strong>Não envie sem testar</strong>: imagem quebrada ou botão sem link passa uma imagem ruim.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<ul class="b-lista"><li><strong>Não cole o link cru</strong> achando que o design vem junto. Tem que ser <strong>Ctrl+A na página aberta</strong> e <strong>Ctrl+V no corpo</strong> do Gmail.</li><li><strong>Não jogue uma lista enorme no campo Para</strong>: todos veem o e-mail de todos. Para muitos destinatários, use <strong>Cco</strong>.</li><li><strong>Não fique editando o design dentro do Gmail</strong> linha por linha. Se precisa mudar o conteúdo, ajuste <strong>na página fonte</strong> e copie de novo.</li><li><strong>Não envie sem testar</strong>: imagem quebrada ou botão sem link passa uma imagem ruim.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-826e5f54250d3493.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

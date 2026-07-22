@@ -249,10 +249,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Os 2 limites que dão segurança:</strong> (1) ela <strong>coleta dados sozinha</strong>, sem ficar pedindo permissão; mas (2) <strong>nenhuma ação que muda a conta</strong> (pausar, escalar, negativar) acontece sem o seu <strong>[APPROVE]</strong>. E número sem fonte, ela não cita — se está no relatório, foi puxado da API.</div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Exemplo real da análise de campanhas do Wolf Carpenters (Google Ads, maio/2026): um arquivo por plataforma com resumo executivo, evolução 5d/15d/30d e score geral, em PDF na paleta do cliente.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/jessica-analise-campanhas-ads-01.jpg" alt="Capa com cabeçalho da conta, resumo executivo e tabela de evolução 5d × 15d × 30d" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Capa com cabeçalho da conta, resumo executivo e tabela de evolução 5d × 15d × 30d</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/jessica-analise-campanhas-ads-02.jpg" alt="Detalhamento das campanhas e recomendações de otimização" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Detalhamento das campanhas e recomendações de otimização</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/jessica-analise-campanhas-ads-01.jpg" alt="Capa com cabeçalho da conta, resumo executivo e tabela de evolução 5d × 15d × 30d" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Capa com cabeçalho da conta, resumo executivo e tabela de evolução 5d × 15d × 30d</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/jessica-analise-campanhas-ads-02.jpg" alt="Detalhamento das campanhas e recomendações de otimização" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Detalhamento das campanhas e recomendações de otimização</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-4aedf08173afedc6.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

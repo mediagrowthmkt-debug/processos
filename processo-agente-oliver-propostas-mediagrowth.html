@@ -231,10 +231,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="4-como-funciona-passo-a-passo" class="b-titulo">4 · Como funciona (passo a passo)</h2>
 <ol class="b-passos"><li>Identifica o cliente lendo reuniões locais + WhatsApp do grupo (2 semanas) + CLIENTE.md</li><li>PASSO 0 — roteia o tipo de orçamento pela fala do Bruno + contexto da reunião</li><li>Extrai os problemas reais do diagnóstico → seção 'O Desafio / Cenário Atual'</li><li>Seleciona os entregáveis do tipo escolhido + catálogo, calibrados na dor do cliente</li><li>Monta o markdown no template, em PT-BR, com valor/prazo/condição do Bruno</li><li>Gera o PDF no template premium (capa navy/dourada, info-grid e seções variáveis por tipo) via Chrome headless</li><li>Salva o .ceu.json, abre o PDF e fecha perguntando se registra no calendário do cliente</li></ol>
 <ul class="b-lista"><li>Quanto mais reunião + WhatsApp lidos, mais a oferta cola na dor real (não fica template genérico)</li><li>Se o pedido não disser o tipo, o Oliver pergunta com botões [APPROVE: Estruturação | Mensalidade | …]</li><li>No tipo Website, depois de fechado, o Frank constrói o site e a Emily escreve a copy</li></ul>
-<div class="b-destaque dica"><span class="ic">💡</span><div>Pra disparar, basta pedir naturalmente: "cria uma proposta pro [cliente]", "monta um orçamento de site", "faz a proposta de mensalidade". O Oliver descobre o tipo e entrega o PDF pronto.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-destaque dica"><span class="ic">💡</span><div>Pra disparar, basta pedir naturalmente: "cria uma proposta pro [cliente]", "monta um orçamento de site", "faz a proposta de mensalidade". O Oliver descobre o tipo e entrega o PDF pronto.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-5e46ef01533fd3ce.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

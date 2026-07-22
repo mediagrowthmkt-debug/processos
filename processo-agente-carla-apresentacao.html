@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>Carla, monta o plano estratégico de 90 dias pra Lia Toss com os números do último relatório</div></div><div class="ex-ent"><span class="ex-tag ent">carla</span><div><p>Ela varre a pasta da Lia Toss + puxa os relatórios, manda o roteiro em texto (capa → diagnóstico com os números reais → objetivo → frentes → roadmap 0-30/30-60/60-90 → metas-alvo → próximo passo) pra aprovar, e depois do 'ok' entrega o deck em PDF 16:9 nas cores da marca + HTML + CEU.</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Exemplo real do deck de aprovação da Lia Toss: apresentação 16:9 em HTML nas cores da marca, exportada em PDF, mostrando a capa e o slide das seis frentes da estratégia.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/carla-apresentacao-01.jpg" alt="Capa do deck nas cores da Lia Toss, com logo e subtítulo da estratégia." loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Capa do deck nas cores da Lia Toss, com logo e subtítulo da estratégia.</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/carla-apresentacao-02.jpg" alt="Slide de estratégia: as seis frentes de marketing em cards, sem nada se sobrepor." loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Slide de estratégia: as seis frentes de marketing em cards, sem nada se sobrepor.</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/carla-apresentacao-01.jpg" alt="Capa do deck nas cores da Lia Toss, com logo e subtítulo da estratégia." loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Capa do deck nas cores da Lia Toss, com logo e subtítulo da estratégia.</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/carla-apresentacao-02.jpg" alt="Slide de estratégia: as seis frentes de marketing em cards, sem nada se sobrepor." loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Slide de estratégia: as seis frentes de marketing em cards, sem nada se sobrepor.</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-61bf2acbf5e7337e.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

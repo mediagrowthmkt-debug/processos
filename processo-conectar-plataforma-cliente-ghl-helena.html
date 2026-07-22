@@ -233,10 +233,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <ul class="b-lista"><li>Confira que o Location ID é da subconta <strong>certa</strong> olhando os caracteres finais do ID.</li><li>Crie <strong>uma</strong> integração privada por cliente no GHL.</li><li>Copie o Token no momento em que criar (ele não reaparece).</li><li>Salve antes de sair da tela.</li><li>Se já estiver tudo conectado e salvo, não refaça: só peça pra Helena publicar.</li></ul>
 <h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que NUNCA fazer</h2>
 <ul class="b-lista"><li>Nunca colar o Location ID de um cliente na configuração de outro: mistura os canais e a Helena publica no perfil errado.</li><li>Nunca trocar os campos: Location ID vai em cima, Token (PIT) vai embaixo.</li><li>Nunca pedir pra Helena publicar antes de salvar/conectar; sem conexão ela não acha os canais.</li><li>Nunca sair da tela sem clicar em Salvar.</li></ul>
-<div class="b-destaque dica"><span class="ic">💡</span><div>Conectou uma vez, fica salvo. Nas próximas publicações a Helena já sobe direto, sem precisar refazer nada.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-destaque dica"><span class="ic">💡</span><div>Conectou uma vez, fica salvo. Nas próximas publicações a Helena já sobe direto, sem precisar refazer nada.</div></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-ef8fbd7dec3251e0.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

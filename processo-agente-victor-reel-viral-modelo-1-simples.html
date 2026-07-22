@@ -248,10 +248,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Os 2 limites que dão segurança:</strong> (1) ele <strong>não gera sem um link/arquivo</strong> de vídeo; e (2) ele <strong>não inventa a marca do cliente</strong> — se faltar o @ ou a logo no <code>CLIENTE.md</code>, ele <strong>bloqueia e te pergunta</strong> em vez de chutar. E o reels só vira de um cliente quando esse cliente é confirmado — nunca defaulta pra MediaGrowth calado.</div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Exemplo real do reel viral Modelo 1 (Simples) feito para a Aciona.Ai a partir de um link de rede social, montado no template MG vertical 1080×1920.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/victor-reel-viral-modelo-1-simples-01.jpg" alt="Abertura no template MG com cabeçalho da marca e gancho &quot;o futuro dos computadores e IAs?&quot;" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Abertura no template MG com cabeçalho da marca e gancho "o futuro dos computadores e IAs?"</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/victor-reel-viral-modelo-1-simples-01.jpg" alt="Abertura no template MG com cabeçalho da marca e gancho &quot;o futuro dos computadores e IAs?&quot;" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Abertura no template MG com cabeçalho da marca e gancho "o futuro dos computadores e IAs?"</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-942d12d9d7211676.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

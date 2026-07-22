@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>fecha maio no DRE</div></div><div class="ex-ent"><span class="ex-tag ent">daniel</span><div><p>Tabela das ~20 linhas (✅ confirmadas pelo extrato, 📋 aguardando extrato, ⏸️ ambíguas) + resumo de receita/despesa/EBITDA + comandos de preview pra você aprovar.</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>DRE Realizado da MediaGrowth (maio/2026) — faturamento, EBITDA e resultado projetado × realizado vindos do mg-dre, fonte única extrato Santander + Nubank.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/daniel-dre-resultado-01.jpg" alt="Aba Realizado DRE — projetado × realizado × % com números reais de maio" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Aba Realizado DRE — projetado × realizado × % com números reais de maio</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/daniel-dre-resultado-01.jpg" alt="Aba Realizado DRE — projetado × realizado × % com números reais de maio" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Aba Realizado DRE — projetado × realizado × % com números reais de maio</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-2a21ea0fa1c1b07f.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

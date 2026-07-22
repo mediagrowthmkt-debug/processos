@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>Cria um template de boas-vindas no WhatsApp da MediaGrowth</div></div><div class="ex-ent"><span class="ex-tag ent">sarah</span><div><p>Plano aprovado, screenshot de preview do template 'boas_vindas_crm_mediagrowth' (Marketing, PT-BR, {{1}} = primeiro nome) e a confirmação: criado, status Pending na revisão da Meta.</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Template de boas-vindas da MediaGrowth criado no GHL (Marketing, PT-BR), em revisão da Meta — preview da mensagem no WhatsApp.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/sarah-criar-template-whatsapp-ghl-01.jpg" alt="Template boas_vindas_crm_mediagrowth (status Pending)" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Template boas_vindas_crm_mediagrowth (status Pending)</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/sarah-criar-template-whatsapp-ghl-01.jpg" alt="Template boas_vindas_crm_mediagrowth (status Pending)" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Template boas_vindas_crm_mediagrowth (status Pending)</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-9d8131045eac7a4e.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>melhora a foto da fachada da Lia Toss pro hero do site</div></div><div class="ex-ent"><span class="ex-tag ent">frank</span><div><p>versões desktop 16:9 (1392×752) e mobile 9:16 (752×1392) em WebP, com o letreiro e branding preservados, luz e céu melhorados, salvas em assets/fotos-site e abertas pra revisar</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Imagens hero geradas por IA (Higgsfield) para o site da Premium Pro, otimizadas e injetadas direto no HTML do site de reformas.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-01.jpg" alt="Hero de cozinha reformada" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de cozinha reformada</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-02.jpg" alt="Hero de banheiro" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de banheiro</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-03.jpg" alt="Hero de fachada/exterior" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de fachada/exterior</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-01.jpg" alt="Hero de cozinha reformada" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de cozinha reformada</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-02.jpg" alt="Hero de banheiro" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de banheiro</figcaption></figure><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/frank-hero-imagem-site-03.jpg" alt="Hero de fachada/exterior" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Hero de fachada/exterior</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-a0779f3881f1c5f4.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

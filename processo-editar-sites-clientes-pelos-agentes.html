@@ -230,10 +230,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="boas-pr-ticas" class="b-titulo">✅ Boas práticas</h2>
 <ul class="b-lista"><li>Seja <strong>específico</strong>: cliente + o que muda + valor antigo + valor novo.</li><li>Mande sempre a <strong>referência</strong> exata (o número/texto oficial correto).</li><li>Peça pra trocar <strong>todas</strong> as ocorrências, não só uma.</li><li>Espere a bolinha terminar antes de seguir.</li><li>Na hora de publicar, aponte o <strong>repositório certo</strong> do cliente no GitHub.</li><li><strong>Sempre confira no site publicado</strong> depois que ele falar que subiu — o "finalizei" não dispensa a conferência.</li></ul>
 <h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que nunca fazer</h2>
-<ul class="b-lista"><li>Usar uma skill padronizada pra um ajuste micro — é desnecessário, descreva direto.</li><li>Ser vago ("muda o número") — sem cliente e sem os valores, o Frank erra o alvo.</li><li>Trocar só uma ocorrência quando o valor aparece em vários lugares do site.</li><li>Dar o processo por concluído <strong>sem abrir o site</strong> e conferir no ar.</li><li>Publicar no <strong>repositório errado</strong> — cada cliente tem o seu no GitHub.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<ul class="b-lista"><li>Usar uma skill padronizada pra um ajuste micro — é desnecessário, descreva direto.</li><li>Ser vago ("muda o número") — sem cliente e sem os valores, o Frank erra o alvo.</li><li>Trocar só uma ocorrência quando o valor aparece em vários lugares do site.</li><li>Dar o processo por concluído <strong>sem abrir o site</strong> e conferir no ar.</li><li>Publicar no <strong>repositório errado</strong> — cada cliente tem o seu no GitHub.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-c477e284d33ab77f.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

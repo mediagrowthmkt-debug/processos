@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <div class="b-exemplo"><div class="ex-ped"><span class="ex-tag">Você pede</span><div>Pedro, remove o Gustavo de todos os grupos que eu sou admin</div></div><div class="ex-ent"><span class="ex-tag ent">pedro</span><div><p>Vistoria mostrando os grupos onde ele está (removíveis × sem admin) + pedido de APPROVE; após o 'sim', remove dos removíveis e devolve REMOVIDO/ausência confirmada por grupo, listando os externos que sobraram pra saída manual.</p></div></div></div>
 <h2 id="exemplo-real-do-resultado" class="b-titulo">📸 Exemplo real do resultado</h2>
 <div class="b-texto"><p>Exemplo do resumo de remoção que o motor mg-wpp-remover devolve: vistoria dos grupos da MediaGrowth, status por grupo (REMOVIDO / SEM ADMIN) e o que sobrou pra ação manual.</p></div>
-<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/pedro-remover-participante-grupo-01.jpg" alt="Resumo da remoção: grupos verificados, removidos onde Bruno é admin e pendência sem admin" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Resumo da remoção: grupos verificados, removidos onde Bruno é admin e pendência sem admin</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-galeria"><figure><span class="zoomwrap"><img class="lb-zoomable" src="assets/ex/pedro-remover-participante-grupo-01.jpg" alt="Resumo da remoção: grupos verificados, removidos onde Bruno é admin e pendência sem admin" loading="lazy"><span class="zoombadge">🔍</span></span><figcaption class="legenda">Resumo da remoção: grupos verificados, removidos onde Bruno é admin e pendência sem admin</figcaption></figure></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-0af15d7ad62b6625.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

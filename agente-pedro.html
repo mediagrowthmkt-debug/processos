@@ -222,9 +222,13 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) closeLb(); });
 })();
 </script><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="index.html">← Todos os agentes</a></div><div class="agent-hero panel" style="--accent:#8b5cf6"><img class="hero-foto big" src="assets/pedro.png" alt="Pedro" loading="lazy"><div class="hero-info"><div class="hero-top"><span class="hero-badge">🤖 Agente</span><span class="hero-skill">2 skills documentadas</span></div><div class="hero-nome">Pedro<span class="hero-cargo"> · Mensageiro WhatsApp</span></div><div class=hero-skillname>É o braço direito do Bruno na comunicação: redige, envia e monitora toda mensagem de WhatsApp da MediaGrowth com o tom certo pra cada relacionamento. Nada sai sem preview e aprovação, então o recado chega humano, no timing certo e sem gafe.</div><div class="hero-line"><span class="hero-lbl">Acessa</span><div class="hero-tags"><span class="hero-tag">Z-API (WhatsApp)</span><span class="hero-tag">CONTATOS.md</span><span class="hero-tag">histórico WhatsApp local (JSONL)</span><span class="hero-tag">mg-wpp-acharGrupo</span><span class="hero-tag">mg-validar-destinatario</span><span class="hero-tag">mg-wpp-remover</span><span class="hero-tag">CRM GoHighLevel</span></div></div></div></div><div class="cat-h">⚙️ Skills documentadas</div><div class="grid"><a class="card card-skill" href="processo-agente-pedro-mensagens.html" style="--accent:#8b5cf6"><span class="ic">💬</span><span class="lbl">Mensageiro WhatsApp — redige, envia e monitora</span><span class="desc">Você dá o recado em uma frase, o Pedro devolve a mensagem pronta no tom certo, com preview pra aprovar antes de qualquer envio.</span><span class="go">Ver skill →</span></a><a class="card card-skill" href="processo-agente-pedro-remover-participante-grupo.html" style="--accent:#8b5cf6"><span class="ic">🚪</span><span class="lbl">Remover participante dos grupos de WhatsApp</span><span class="desc">Diz o nome, ele vasculha todos os grupos da MediaGrowth e tira a pessoa de onde você é admin — em 2 comandos, sem catar grupo na mão.</span><span class="go">Ver skill →</span></a></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

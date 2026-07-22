@@ -242,10 +242,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que nunca fazer</h2>
 <ul class="b-lista"><li>Não achar que <strong>Salvar</strong> já publica — só <strong>Publicar no site</strong> vai pro ar.</li><li>Não sair achando que subiu: depois de <strong>Publicar</strong>, confira no <strong>site oficial</strong>.</li><li>Não subir fotos gigantes/pesadas sem precisar — deixam o site lento.</li><li>Não repassar o link/código pra quem não deveria mexer no site.</li></ul>
 <h2 id="boas-pr-ticas" class="b-titulo">✅ Boas práticas</h2>
-<ul class="b-lista"><li>Use <strong>Ver prévia limpa</strong> antes de publicar pra ver como o visitante vê.</li><li>No blog, capriche no <strong>resumo</strong> (é ele que dá vontade de clicar) e na <strong>foto de capa</strong>.</li><li>Publicou? Abra o <strong>site oficial</strong> e confira no ar.</li><li>Código não chegou? Olhe o <strong>spam</strong> e use <strong>Resend</strong>.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<ul class="b-lista"><li>Use <strong>Ver prévia limpa</strong> antes de publicar pra ver como o visitante vê.</li><li>No blog, capriche no <strong>resumo</strong> (é ele que dá vontade de clicar) e na <strong>foto de capa</strong>.</li><li>Publicou? Abra o <strong>site oficial</strong> e confira no ar.</li><li>Código não chegou? Olhe o <strong>spam</strong> e use <strong>Resend</strong>.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-788fe27bf72ec339.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

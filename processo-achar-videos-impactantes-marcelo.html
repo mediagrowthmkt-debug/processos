@@ -234,10 +234,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="ferramentas" class="b-titulo">Ferramentas</h2>
 <ul class="b-lista"><li><strong>TikTok</strong> — fonte principal de vídeo impactante.</li><li><strong>TikTok Downloader</strong> — baixar o vídeo limpo (sem marca-d'água).</li><li><strong>Bloco de notas</strong> — salvar e organizar os links achados.</li><li><strong>Pesquisa em inglês</strong> — quando não achar em PT-BR.</li></ul>
 <h2 id="exemplo-real-roteiro-do-marcelo-terremoto-tsunami" class="b-titulo">Exemplo real — roteiro do Marcelo (terremoto / tsunami)</h2>
-<div class="b-texto"><p>Roteiro: <em>"terremoto de magnitude 7,8 nas Filipinas… não foi coincidência, foi física, foi geologia… um tsunami nasce no fundo do mar… placas tectônicas."</em> Palavras-chave buscadas: <strong>terremoto Filipinas</strong>, <strong>terremoto ao vivo</strong>, <strong>terremoto rápido</strong>, <strong>fundo do mar</strong>, <strong>placas tectônicas</strong>. Cada trecho vira um vídeo impactante que ilustra exatamente o que ele fala.</p></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-texto"><p>Roteiro: <em>"terremoto de magnitude 7,8 nas Filipinas… não foi coincidência, foi física, foi geologia… um tsunami nasce no fundo do mar… placas tectônicas."</em> Palavras-chave buscadas: <strong>terremoto Filipinas</strong>, <strong>terremoto ao vivo</strong>, <strong>terremoto rápido</strong>, <strong>fundo do mar</strong>, <strong>placas tectônicas</strong>. Cada trecho vira um vídeo impactante que ilustra exatamente o que ele fala.</p></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-8060c1ecd86981eb.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>

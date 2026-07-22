@@ -226,10 +226,14 @@ align-items:center;justify-content:center;background:rgba(255,255,255,.92);borde
 <h2 id="como-est-organizado" class="b-titulo">Como está organizado</h2>
 <ol class="b-passos"><li>Na página inicial você vê os processos agrupados por <strong>categoria</strong> (Produção, Operação, Comercial, CRM...).</li><li>Clique em um card para abrir o processo completo: passo a passo em texto, prints e vídeos.</li><li>Use o campo de <strong>busca</strong> no topo pra achar um processo pelo nome.</li><li>Em qualquer processo, o botão <strong>Copiar link</strong> (canto inferior) gera o link direto daquele processo pra você mandar no WhatsApp.</li></ol>
 <h2 id="como-pedir-um-processo-novo" class="b-titulo">Como pedir um processo novo</h2>
-<div class="b-texto"><p>Os processos são criados e mantidos pela MediaGrowth. Precisa documentar algo novo? Manda o material (texto, prints, link ou arquivo do vídeo) que a gente publica aqui.</p></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cp">🔗 Copiar link</button></div><script>
-const cp=document.getElementById('cp');cp.addEventListener('click',async()=>{
-try{await navigator.clipboard.writeText(location.href);}catch(e){
-const t=document.createElement('textarea');t.value=location.href;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
-const o=cp.innerHTML;cp.innerHTML='✓ Link copiado';cp.classList.add('ok');
-setTimeout(()=>{cp.innerHTML=o;cp.classList.remove('ok');},1800);});
+<div class="b-texto"><p>Os processos são criados e mantidos pela MediaGrowth. Precisa documentar algo novo? Manda o material (texto, prints, link ou arquivo do vídeo) que a gente publica aqui.</p></div></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-5d72b9d0b87129f0.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
 </script></body></html>
