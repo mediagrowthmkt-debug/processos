@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Como editar o site: acessar, editar e salvar · Processos MediaGrowth</title>
+<meta name="description" content="Passo a passo simples pra editar o site pelo painel: você entra pelo link com um código que chega no e-mail, clica direto no texto ou na foto pra trocar, salva e publica. E o mais importante: nada vai pro ar sem você clicar em Publicar.">
+<meta property="og:type" content="website"><meta property="og:title" content="Como editar o site: acessar, editar e salvar · Processos MediaGrowth">
+<meta property="og:description" content="Passo a passo simples pra editar o site pelo painel: você entra pelo link com um código que chega no e-mail, clica direto no texto ou na foto pra trocar, salva e publica. E o mais importante: nada vai pro ar sem você clicar em Publicar.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#EEF2F7;--card:#fff;--orange:#E86B2A;--orange-soft:rgba(232,107,42,.10);
+--border:rgba(0,0,0,.08);--border-o:rgba(232,107,42,.30);--ink:#16181d;--gray:#8a909a}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+min-height:100dvh;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px 80px}
+.topbar{display:flex;align-items:center;gap:10px;margin-bottom:30px}
+.logo-dot{width:10px;height:10px;background:var(--orange);border-radius:50%;
+box-shadow:0 0 0 3px var(--orange-soft);flex-shrink:0}
+.logo-text{font-weight:600;font-size:15px;letter-spacing:-.2px}
+.topbar .sep{flex:1}
+.topbar a.back{font-size:13px;color:var(--gray);text-decoration:none;font-weight:500}
+.topbar a.back:hover{color:var(--ink)}
+h1.title{font-size:30px;font-weight:600;letter-spacing:-.6px;margin:6px 0 6px}
+.sub{color:var(--gray);font-size:14px;margin-bottom:26px}
+/* busca */
+.search{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:12px;
+background:var(--card);font:inherit;font-size:14px;margin-bottom:26px;outline:none}
+.search:focus{border-color:var(--border-o)}
+/* categorias + grid */
+.cat-h{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+color:var(--gray);margin:30px 0 12px;display:flex;align-items:center;gap:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:14px}
+.wrap-index{max-width:1120px}
+.wrap-index #listGrid,.wrap-index #pool{grid-template-columns:repeat(auto-fill,minmax(236px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 18px;
+text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:7px;
+transition:border-color .16s,transform .14s}
+.card:hover{border-color:var(--border-o);transform:translateY(-2px)}
+.card-cover{position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+border:1px solid var(--border);background:#0a0a0c;margin-bottom:4px}
+.card-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.card:hover .card-cover img{transform:scale(1.04)}
+.card-cover .play{position:absolute;inset:0;margin:auto;width:46px;height:46px;display:flex;
+align-items:center;justify-content:center;background:rgba(0,0,0,.55);color:#fff;border-radius:50%;
+font-size:16px;padding-left:3px;backdrop-filter:blur(2px)}
+.card .ic{font-size:22px}
+.card .lbl{font-weight:600;font-size:15px;letter-spacing:-.1px}
+.card .desc{font-size:12.5px;color:var(--gray);line-height:1.45}
+.card .go{font-size:12px;color:var(--orange);font-weight:600;margin-top:2px}
+.card.ext .go::after{content:" ↗"}
+/* nível 1 — caixas de categoria (grid clicável) */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px}
+.cat-box{appearance:none;cursor:pointer;text-align:left;background:var(--card);border:1px solid var(--border);
+border-radius:18px;padding:24px 20px;display:flex;flex-direction:column;gap:9px;font:inherit;color:inherit;
+transition:border-color .16s,transform .14s,box-shadow .16s}
+.cat-box:hover{border-color:var(--border-o);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.07)}
+.cat-emoji{font-size:42px;line-height:1}
+.cat-name{font-size:16.5px;font-weight:600;letter-spacing:-.2px}
+.cat-count{font-size:12px;color:var(--gray);font-weight:500;display:flex;align-items:center;gap:5px}
+.cat-count::after{content:"abrir →";margin-left:auto;color:var(--orange);font-weight:600;opacity:0;transition:opacity .15s}
+.cat-box:hover .cat-count::after{opacity:1}
+/* nível 2 — voltar + cabeçalho da categoria */
+.back-cats{appearance:none;cursor:pointer;background:none;border:0;color:var(--gray);font:inherit;font-size:13px;
+font-weight:500;padding:5px 0;margin-bottom:8px;display:inline-flex;align-items:center;gap:5px}
+.back-cats:hover{color:var(--ink)}
+.list-h{font-size:23px;font-weight:600;letter-spacing:-.3px;margin:2px 0 20px;display:flex;align-items:center;gap:11px}
+.list-h .list-emoji{font-size:28px}
+.ext-tag{font-size:11px;color:var(--orange)}
+.empty{color:var(--gray);font-size:13px;padding:14px 2px}
+/* processo */
+.meta{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--gray);margin-bottom:24px}
+.meta b{color:var(--ink);font-weight:600}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;
+margin:0 0 28px;display:flex;flex-direction:column;gap:7px}
+.toc-h{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);margin-bottom:3px}
+.toc a{font-size:13.5px;text-decoration:none;color:var(--ink)}
+.toc a:hover{color:var(--orange)}
+.content>*{margin-bottom:18px}
+.b-texto p{font-size:15.5px;margin-bottom:12px}
+.b-texto p:last-child{margin-bottom:0}
+.b-titulo{font-size:20px;font-weight:600;letter-spacing:-.3px;margin:34px 0 12px;
+padding-bottom:8px;border-bottom:1px solid var(--border);scroll-margin-top:20px}
+.b-passos,.b-lista{padding-left:0;list-style:none;counter-reset:step}
+.b-passos li{position:relative;padding:10px 0 10px 44px;font-size:15px;border-bottom:1px solid var(--border)}
+.b-passos li:last-child{border-bottom:0}
+.b-passos li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:9px;
+width:28px;height:28px;background:var(--orange-soft);color:var(--orange);font-weight:600;font-size:13px;
+border-radius:50%;display:flex;align-items:center;justify-content:center}
+.b-lista li{position:relative;padding:6px 0 6px 22px;font-size:15px}
+.b-lista li::before{content:"";position:absolute;left:4px;top:14px;width:6px;height:6px;
+background:var(--orange);border-radius:50%}
+.ratio{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+background:#000;border:1px solid var(--border)}
+.ratio iframe,.ratio video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.b-imagem img{width:100%;border-radius:12px;border:1px solid var(--border);display:block}
+.legenda{font-size:12.5px;color:var(--gray);margin-top:8px;text-align:center}
+.b-galeria{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:8px 0}
+.b-galeria figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px}
+.zoomwrap{position:relative;display:inline-block;line-height:0}
+.b-galeria img,.b-imagem img.lb-zoomable{cursor:zoom-in}
+.b-galeria img{max-height:360px;max-width:240px;width:auto;height:auto;border-radius:12px;
+border:1px solid var(--border);display:block;transition:transform .2s}
+.zoomwrap:hover img{transform:scale(1.03)}
+.zoombadge{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;
+background:rgba(15,17,23,.74);color:#fff;display:flex;align-items:center;justify-content:center;
+font-size:14px;cursor:zoom-in;opacity:0;transition:opacity .18s;backdrop-filter:blur(2px);pointer-events:auto}
+.zoomwrap:hover .zoombadge{opacity:1}
+.b-galeria .legenda{margin-top:0;max-width:240px}
+@media(max-width:600px){.b-galeria{gap:10px}.b-galeria img{max-height:300px;max-width:44vw}.zoombadge{opacity:.85}}
+.lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
+background:rgba(8,9,13,.94);cursor:zoom-out;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:92vh;border-radius:10px;box-shadow:0 18px 70px #000c;
+cursor:zoom-in;transition:transform .2s;will-change:transform}
+.lightbox img.zoom{transform:scale(1.9);cursor:zoom-out;max-width:none;max-height:none}
+.lb-close{position:fixed;top:18px;right:24px;width:42px;height:42px;border:0;border-radius:50%;
+background:rgba(255,255,255,.12);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:10000}
+.lb-close:hover{background:rgba(255,255,255,.24)}
+.b-destaque{display:flex;gap:11px;padding:14px 16px;border-radius:12px;font-size:14px;align-items:flex-start}
+.b-destaque .ic{font-size:17px;line-height:1.4}
+.b-destaque.info{background:#eef4ff;border:1px solid #d6e4ff}
+.b-destaque.aviso{background:#fff4e8;border:1px solid #ffd8a8}
+.b-destaque.dica{background:var(--orange-soft);border:1px solid var(--border-o)}
+.b-arquivo{display:inline-flex;gap:8px;padding:11px 16px;background:var(--card);border:1px solid var(--border);
+border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px}
+.b-arquivo:hover{border-color:var(--border-o)}
+.b-divisor{border:0;border-top:1px solid var(--border)}
+code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:5px;font-size:.9em;
+font-family:ui-monospace,Menlo,monospace}
+/* copiar link */
+.copybar{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+#cpu{background:#0f766e !important;box-shadow:0 8px 22px rgba(15,118,110,.32)}
+.copybar button{background:var(--orange);color:#fff;border:0;border-radius:12px;padding:12px 18px;
+font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;box-shadow:0 8px 24px rgba(232,107,42,.35);
+display:flex;align-items:center;gap:8px}
+.copybar button:active{transform:scale(.97)}
+.copybar .ok{background:#1f9d55;box-shadow:0 8px 24px rgba(31,157,85,.35)}
+.foot{margin-top:50px;padding-top:22px;border-top:1px solid var(--border);
+font-size:11px;color:var(--gray);letter-spacing:.05em;text-transform:uppercase;text-align:center}
+/* ===== Documentação de Agente / Skill ===== */
+/* hero no topo da página */
+.agent-hero{display:flex;gap:18px;align-items:center;background:var(--card);
+border:1px solid var(--border);border-left:4px solid var(--accent,var(--orange));
+border-radius:16px;padding:18px 20px;margin:4px 0 24px}
+.hero-foto{width:84px;height:84px;border-radius:16px;object-fit:cover;flex-shrink:0;
+border:2px solid var(--accent,var(--orange));background:#f3f4f6}
+.hero-info{display:flex;flex-direction:column;gap:5px;min-width:0}
+.hero-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-badge{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+color:#fff;background:var(--accent,var(--orange));padding:3px 9px;border-radius:20px}
+.hero-skill{font-size:11px;color:var(--gray);font-family:ui-monospace,Menlo,monospace;
+background:rgba(0,0,0,.05);padding:3px 8px;border-radius:6px}
+.hero-nome{font-size:21px;font-weight:700;letter-spacing:-.3px}
+.hero-cargo{font-weight:500;color:var(--gray);font-size:15px}
+.hero-skillname{font-size:14px;color:var(--ink);font-weight:500;margin-bottom:3px}
+.hero-line{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;margin-top:3px}
+.hero-lbl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+color:var(--gray);padding-top:4px;min-width:74px}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.hero-tag{font-size:12px;font-weight:500;color:var(--accent,var(--orange));
+background:rgba(232,107,42,.10);border:1px solid var(--border-o);padding:3px 10px;border-radius:20px}
+.hero-tags code{background:rgba(0,0,0,.05);font-size:11.5px;padding:2px 7px;border-radius:6px}
+/* bloco de parâmetros (variáveis que dá pra pedir) */
+.b-parametros{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--card)}
+.p-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border)}
+.p-row:last-child{border-bottom:0}
+.p-nome{font-weight:600;font-size:14px;color:var(--ink)}
+.p-desc{font-size:14px;color:#3d424c}
+.p-ex{margin-top:5px;font-size:12.5px;color:var(--gray);font-style:italic}
+/* bloco de exemplo (pedido → entrega) */
+.b-exemplo{display:flex;flex-direction:column;gap:10px;background:var(--card);
+border:1px solid var(--border);border-radius:14px;padding:16px}
+.ex-ped,.ex-ent{display:flex;flex-direction:column;gap:6px}
+.ex-tag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+color:var(--gray);background:rgba(0,0,0,.05);padding:3px 9px;border-radius:20px}
+.ex-tag.ent{color:#fff;background:var(--orange)}
+.ex-ped>div{font-size:14.5px;background:#eef4ff;border:1px solid #d6e4ff;border-radius:10px;padding:10px 13px}
+.ex-ent>div p{font-size:14.5px;margin-bottom:8px}
+.ex-ent>div p:last-child{margin-bottom:0}
+/* card de agente na grade */
+.card-agent .ag-cover{position:relative;width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;
+border:1px solid var(--border);background:linear-gradient(135deg,rgba(232,107,42,.10),rgba(0,0,0,.03));margin-bottom:4px}
+.card-agent .ag-cover img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .25s}
+.card-agent:hover .ag-cover img{transform:scale(1.04)}
+.ag-cover.fallback{display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,var(--c,#888),rgba(0,0,0,.45))}
+.ag-cover .ag-init{color:#fff;font-size:52px;font-weight:800;opacity:.95;letter-spacing:.5px}
+.hero-foto.init{display:flex;align-items:center;justify-content:center;background:var(--c,#888);
+color:#fff;font-size:34px;font-weight:700}
+.hero-foto.big.init{font-size:42px}
+.card-agent .ag-badge{position:absolute;top:8px;left:8px;width:30px;height:30px;display:flex;
+align-items:center;justify-content:center;background:rgba(255,255,255,.92);border-radius:9px;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.card-agent{border-top:3px solid var(--accent,var(--orange))}
+.card-agent .ag-who{font-size:12.5px;color:var(--accent,var(--orange));font-weight:600}
+.card-agent .ag-who b{font-weight:700}
+/* link de volta dentro do header da skill */
+.hero-back{margin-left:auto;font-size:12px;color:var(--gray);text-decoration:none;font-weight:500;white-space:nowrap}
+.hero-back:hover{color:var(--accent,var(--orange))}
+/* header do painel do agente (foto maior) */
+.agent-hero.panel{align-items:flex-start}
+.hero-foto.big{width:96px;height:96px;border-radius:18px}
+/* card de skill no painel do agente */
+.card-skill{border-top:3px solid var(--accent,var(--orange))}
+.card-skill .ic{font-size:24px}
+.card-skill .go{color:var(--accent,var(--orange))}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1.title{font-size:25px}.wrap{padding:24px 16px 80px}
+.agent-hero{flex-direction:column;align-items:flex-start}.p-row{grid-template-columns:1fr;gap:4px}}
+</style></head><body>
+<div id="lb" class="lightbox" aria-hidden="true"><button class="lb-close" aria-label="Fechar">&times;</button><img id="lb-img" alt=""></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=document.getElementById('lb-img'), zoom=false;
+  function openLb(src){im.src=src; zoom=false; im.classList.remove('zoom'); lb.classList.add('open'); document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open'); im.removeAttribute('src'); document.body.style.overflow='';}
+  document.addEventListener('click', function(e){
+    var t=e.target;
+    if(t.classList && t.classList.contains('lb-zoomable')){ e.preventDefault(); openLb(t.currentSrc||t.src); return; }
+    if(t.classList && t.classList.contains('zoombadge')){ var img=t.parentNode.querySelector('img'); if(img){ e.preventDefault(); openLb(img.currentSrc||img.src); } return; }
+    if(t.id==='lb-img'){ zoom=!zoom; im.classList.toggle('zoom', zoom); return; }
+    if(t.id==='lb' || (t.classList && t.classList.contains('lb-close'))){ closeLb(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && lb.classList.contains('open')) closeLb(); });
+})();
+</script><div class="wrap"><div class="topbar"><div class="logo-dot"></div><span class="logo-text">MediaGrowth</span><div class="sep"></div><a class="back" href="index.html">← Todos os processos</a></div><h1 class="title">Como editar o site: acessar, editar e salvar</h1><div class="sub">Passo a passo simples pra editar o site pelo painel: você entra pelo link com um código que chega no e-mail, clica direto no texto ou na foto pra trocar, salva e publica. E o mais importante: nada vai pro ar sem você clicar em Publicar.</div><div class="meta"><span>⚙️ <b>Operação</b></span><span>Atualizado em <b>2026-08-19</b></span><span>Por <b>MediaGrowth</b></span></div><nav class="toc"><span class="toc-h">Neste processo</span><a href="#o-que-esse-painel">O que é esse painel</a><a href="#1-acessar-o-painel-c-digo-no-e-mail">1. Acessar o painel (código no e-mail)</a><a href="#2-editar-textos-e-fotos">2. Editar textos e fotos</a><a href="#3-salvar-e-publicar">3. Salvar e publicar</a><a href="#4-ver-a-pr-via-e-conferir-no-link-oficial">4. Ver a prévia e conferir no link oficial</a><a href="#o-que-nunca-fazer">❌ O que nunca fazer</a><a href="#boas-pr-ticas">✅ Boas práticas</a></nav><div class="content"><div class="b-destaque info"><span class="ic">ℹ️</span><div><strong>Regra de ouro:</strong> você sempre <strong>salva primeiro</strong> e depois <strong>publica</strong>. Nada aparece no site no ar enquanto você não clica em <strong>Publicar</strong> — então pode editar à vontade sem medo de errar.</div></div>
+<figure class="b-video"><div class="ratio"><iframe src="https://www.youtube.com/embed/juI-LxBAhSo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><div class="legenda">Walkthrough completo: acessar o painel, editar texto e foto, salvar e publicar.</div></figure>
+<h2 id="o-que-esse-painel" class="b-titulo">O que é esse painel</h2>
+<div class="b-texto"><p>É o painel de edição do próprio site. Você <strong>clica direto no texto ou na foto e edita no lugar</strong>, sem depender de ninguém e sem mexer em código. O acesso é protegido: só entra quem recebe um <strong>código no e-mail</strong>.</p></div>
+<h2 id="1-acessar-o-painel-c-digo-no-e-mail" class="b-titulo">1. Acessar o painel (código no e-mail)</h2>
+<div class="b-texto"><p>O link de acesso é enviado <strong>no grupo</strong>. Ao abrir, cai numa página de login pedindo o e-mail. Você coloca o e-mail autorizado (o e-mail cadastrado do site), recebe um código e entra na tela de edição.</p></div>
+<ol class="b-passos"><li>Abra o <strong>link de acesso</strong> que foi enviado no grupo.</li><li>Na tela de login, digite o <strong>e-mail autorizado</strong> (o e-mail cadastrado do site).</li><li>Clique em <strong>Send login code</strong> (enviar código).</li><li>O <strong>código chega no e-mail</strong> (confira também o celular). Copie e cole na tela.</li><li>Pronto: você entra direto na <strong>edição do site</strong>.</li></ol>
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div>Use sempre o <strong>e-mail autorizado</strong> do site. Se digitar um e-mail que não está liberado, o código não chega e o acesso não abre.</div></div>
+<h2 id="2-editar-textos-e-fotos" class="b-titulo">2. Editar textos e fotos</h2>
+<div class="b-texto"><p>Dentro do painel é bem simples: <strong>é só clicar e editar</strong>. Passe o mouse no que quer mudar, clique e altere ali mesmo. Dá pra <strong>trocar o texto</strong> e <strong>trocar a foto</strong> em qualquer parte da página.</p></div>
+<ol class="b-passos"><li>Para <strong>texto</strong>: clique em cima da frase e digite por cima.</li><li>Para <strong>foto</strong>: clique na imagem e escolha a nova foto pra trocar.</li><li>Para <strong>mudar de página</strong>: use o menu <strong>no topo</strong> — é ali que você navega entre as páginas do site (ex.: cada página de um produto ou pessoa).</li><li>Edite a página inteira do jeito que precisar, uma de cada vez.</li></ol>
+<div class="b-destaque dica"><span class="ic">💡</span><div><strong>Não conseguiu editar alguma página ou foto?</strong> Avise no grupo. Algumas partes ficam travadas e a gente <strong>libera a edição</strong> pra você na hora.</div></div>
+<h2 id="3-salvar-e-publicar" class="b-titulo">3. Salvar e publicar</h2>
+<div class="b-texto"><p>Depois de mexer, você tem <strong>dois passos</strong>: primeiro <strong>Salvar alterações</strong> (guarda o que você fez) e depois <strong>Publicar</strong> (é isso que joga pro site no ar).</p></div>
+<ol class="b-passos"><li>Terminou de editar? Clique em <strong>Salvar alterações</strong>.</li><li>O painel pede pra salvar antes de publicar — então <strong>salve primeiro</strong>, sempre.</li><li>Agora clique em <strong>Publicar</strong>.</li><li>Aparece a confirmação: <strong>Site publicado com sucesso</strong>.</li></ol>
+<div class="b-destaque aviso"><span class="ic">⚠️</span><div><strong>Salvar ≠ Publicar.</strong> Salvar guarda a sua edição na prévia; <strong>Publicar</strong> é o que coloca de verdade no site no ar. Se você só salvar e não publicar, o público ainda não vê a mudança.</div></div>
+<h2 id="4-ver-a-pr-via-e-conferir-no-link-oficial" class="b-titulo">4. Ver a prévia e conferir no link oficial</h2>
+<div class="b-texto"><p>Antes de publicar, dá pra abrir a <strong>prévia</strong> e ver como vai ficar. Depois de publicar, confira no <strong>link oficial</strong> do site — só que ele <strong>não atualiza na hora</strong>.</p></div>
+<ol class="b-passos"><li>Use o botão de <strong>prévia</strong> pra ver como a página vai ficar antes de mandar pro ar.</li><li>Depois de publicar, abra o <strong>link oficial</strong> do site.</li><li>Ele leva mais ou menos <strong>1 a 2 minutos</strong> pra atualizar: fique <strong>recarregando a página</strong> até a sua edição aparecer.</li><li>Quando a mudança aparecer no link oficial, está tudo certo.</li></ol>
+<div class="b-destaque info"><span class="ic">ℹ️</span><div>O link oficial demora <strong>1 a 2 minutos</strong> pra mostrar a edição. Se acabou de publicar e ainda não mudou, <strong>atualize a página</strong> algumas vezes — é normal, não é erro.</div></div>
+<h2 id="o-que-nunca-fazer" class="b-titulo">❌ O que nunca fazer</h2>
+<ul class="b-lista"><li><strong>Publicar sem salvar</strong> — salve sempre antes de publicar.</li><li><strong>Achar que salvar já colocou no ar</strong> — enquanto não clicar em <strong>Publicar</strong>, o público não vê nada.</li><li><strong>Editar sem revisar</strong> — releia o texto e confira a foto antes de publicar.</li><li><strong>Achar que o link oficial não atualizou</strong> e republicar várias vezes — ele leva 1 a 2 minutos; é só recarregar.</li><li><strong>Forçar a edição de uma parte travada</strong> — se não abre, peça no grupo pra liberarem.</li></ul>
+<h2 id="boas-pr-ticas" class="b-titulo">✅ Boas práticas</h2>
+<ul class="b-lista"><li>Entre sempre pelo <strong>e-mail autorizado</strong> do site.</li><li>Edite <strong>uma página de cada vez</strong> (navegando pelo menu do topo) pra não se perder.</li><li><strong>Salvar → Publicar</strong> nessa ordem, sempre.</li><li>Confira na <strong>prévia</strong> antes e no <strong>link oficial</strong> depois (dando 1 a 2 minutos pra atualizar).</li><li>Qualquer parte que não deixa editar, <strong>avise no grupo</strong> pra liberarmos.</li></ul></div><div class="foot">MediaGrowth · Central de Processos</div></div><div class="copybar"><button id="cpu" data-u="https://processos.mediagrowth.com.br/link-46f8b18651db7c03.html" title="Link isolado: quem abre só vê este processo, não os outros">🔗 Copiar link único</button><button id="cp">🔗 Copiar link</button></div><script>
+function _cpwrite(txt,btn,ok){
+  (async()=>{try{await navigator.clipboard.writeText(txt);}catch(e){
+    const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();}
+  const o=btn.innerHTML;btn.innerHTML=ok;btn.classList.add('ok');
+  setTimeout(()=>{btn.innerHTML=o;btn.classList.remove('ok');},1800);})();}
+var _cp=document.getElementById('cp');
+if(_cp)_cp.addEventListener('click',()=>_cpwrite(location.href,_cp,'✓ Link copiado'));
+var _cpu=document.getElementById('cpu');
+if(_cpu)_cpu.addEventListener('click',()=>_cpwrite(_cpu.dataset.u,_cpu,'✓ Link único copiado'));
+</script></body></html>
